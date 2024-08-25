@@ -6,4 +6,5 @@
 .login-form{
     width: 100%;
     background-color:  #7Fa1c3;
+    box-shadow: 0 10px 15px rgb(90, 90, 103);
 }
