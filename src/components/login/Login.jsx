@@ -31,7 +31,7 @@ function Login() {
         <div className='d-flex justify-content-evenly'>
             <button className=' btn btn-dark'>Login</button>
         </div>
-        {/* <p className='text-center'>New User? <Link to="/register">Register</Link></p> */}
+        <p className='text-center'>New User? <Link to="/register">Register</Link></p>
         </form>
         </div> 
         </div>
