@@ -4,12 +4,13 @@ import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
 import RootLayout from './RootLayout'
-
+import RoutingError from './components/RoutingError'
 function App({children}) {
   const browserRouter = createBrowserRouter([
       {
         path:'',
         element: <RootLayout />,
+        errorElement: <RoutingError />,
         children:[
           {
             path:'',
