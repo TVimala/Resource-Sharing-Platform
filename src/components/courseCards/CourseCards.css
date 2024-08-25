@@ -1,0 +1,45 @@
+ .card {
+    /* position: relative; */
+    width: 15rem; /* Adjust width */
+    height: 15rem; 
+    border-radius: 1.5rem; /* Rounded corners */
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow */
+    background-color: #f1f5f9; /* Background color */
+  }
+  
+  .card.dark-mode {
+    background-color: #2d3748; /* Dark mode background color */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* Dark mode shadow */
+  }
+  
+  .card-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* Transparency */
+  }
+  
+  .card-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-size: 1.25rem; /* Adjust text size */
+    font-weight: 600; /* Bold text */
+    text-align: center;
+  }

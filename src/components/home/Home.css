@@ -1,0 +1,56 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+    padding: 20px; /* Optional padding to prevent content from touching the edges */
+  }
+  
+  .image {
+    position: relative;
+    width: 100%; /* Make image container responsive */
+    max-width: 800px; /* Limit maximum width */
+    height: auto; /* Maintain aspect ratio */
+    overflow: hidden; /* Ensure the image doesn't overflow the container */
+    margin-bottom: 20px; /* Space between image and CourseCards */
+  }
+  
+  .image img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  }
+  
+  .image .start{
+    position: absolute;
+    top:70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+  .start{
+    padding: 10px;
+    width: 160px;
+    height: 80px;
+    background-color: transparent;
+    border: 3px solid grey;
+    font-size: 40px;
+  }
+
+
+
+  @media (max-width: 768px) {
+    .image {
+      width: 100%; /* Full width on smaller screens */
+      max-width: 100%; /* Ensure it doesn't exceed viewport width */
+      height: auto; /* Adjust height automatically */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .image img {
+      width: 100%; /* Full width on very small screens */
+    }
+  }
+  
