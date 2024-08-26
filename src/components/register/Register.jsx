@@ -1,13 +1,42 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './Register.css';
+import { useNavigate } from 'react-router-dom';
+import {useState} from 'react'
+
 
 function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = data => {
-        console.log(data);
-    };
+    let [err,setErr]=useState("")
+
+    let navigate=useNavigate()
+
+
+    async function onUserRegister(newUser){
+        try{
+        console.log(newUser)
+          let res=await fetch("http://localhost:4000/user-api/user",{
+          method:'POST',
+          headers:{"Content-type":"application/json"},
+          body:JSON.stringify(newUser)
+        })
+    
+        let msg=await res.json()
+        console.log(msg)
+        if(msg.message==="user created"){
+          navigate('/login')
+        }
+        else{
+          setErr(msg.message)
+          }
+      }
+      catch(err){
+        console.log(err)
+        setErr(err.message)
+      }
+     }
+    
 
     return (
       <>
@@ -15,7 +44,9 @@ function Register() {
 
         <div className="row">
         <div className='col-11 col-sm-10 col-md-6 mx-auto'>
-            <form onSubmit={handleSubmit(onSubmit)} className='register-form rounded p-5'>
+            <form onSubmit={handleSubmit(onUserRegister)} className='register-form rounded p-5'>
+
+            {err && <p className="text-danger text-center">{err}</p>}
 
                 <div className='mb-3'>
                     <label htmlFor="username" className='form-label'>Username</label>
