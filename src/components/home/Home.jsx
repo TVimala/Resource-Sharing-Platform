@@ -6,13 +6,12 @@ import './Home.css'
 function Home() {
   return (
     <div className='home-container'>
-      <div className='image'>
-     <img src="home.jpg" alt="" />
-     <button className=" start btn btn-primary">Start</button>
-     </div>
-        <CourseCards cardData={cardData} />
-    </div>
+      <h1 className='resource p-5'>Resource-Sharing-Platform</h1>
+     <button className=" start btn">START</button>
+       <div className='courseimg m-5 flex'>
+       <CourseCards cardData={cardData}/>
+       </div>
+        </div>
   )
 }
-
 export default Home
