@@ -4,42 +4,31 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh; /* Ensure the container takes at least the full viewport height */
-    padding: 20px; /* Optional padding to prevent content from touching the edges */
-  }
-  
-  .image {
-    position: relative;
-    width: 100%; /* Make image container responsive */
-    max-width: 800px; /* Limit maximum width */
-    height: auto; /* Maintain aspect ratio */
-    overflow: hidden; /* Ensure the image doesn't overflow the container */
-    margin-bottom: 20px; /* Space between image and CourseCards */
-  }
-  
-  .image img {
-    width: 100%; /* Make image responsive */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Cover the container while maintaining aspect ratio */
-  }
-  
-  .image .start{
+    background-color:  #7Fa1c3;
+  } 
+  /* .image img {
+    width: 100%; 
+    height: auto; 
+   object-fit: cover; 
+   }*/
+  /*.image .start{
     position: absolute;
     top:70%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-  }
+  } */
   .start{
     padding: 10px;
     width: 160px;
     height: 80px;
     background-color: transparent;
-    border: 3px solid grey;
+    border: 3px solid rgb(20, 19, 19);
     font-size: 40px;
   }
-
-
-
+ .resource{
+  font-weight: 600;
+  font-size:5rem;
+ }
   @media (max-width: 768px) {
     .image {
       width: 100%; /* Full width on smaller screens */
