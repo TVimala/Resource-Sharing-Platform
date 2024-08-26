@@ -3,6 +3,9 @@ import { createBrowserRouter,RouterProvider} from 'react-router-dom'
 import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
+import Liked from './components/liked/Liked'
+import Profile from './components/profile/Profile'
+import Saved from './components/saved/Saved'
 import RootLayout from './RootLayout'
 import RoutingError from './components/RoutingError'
 function App({children}) {
@@ -22,6 +25,15 @@ function App({children}) {
           },{
             path:'/register',
             element:<Register/>
+          },{
+            path:'/liked',
+            element:<Liked/>
+          },{
+            path:'/saved',
+            element:<Saved/>
+          },{
+            path:'/profile',
+            element:<Profile/>
           }
         ]
       }
