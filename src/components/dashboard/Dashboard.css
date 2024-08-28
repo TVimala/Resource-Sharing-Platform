@@ -7,6 +7,7 @@
     height: auto;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-evenly;
 }
 .dashboard{
@@ -18,25 +19,27 @@
 .links{
    list-style : none;
 }
-/* SearchBar at the top */
 .grid-container {
 display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 300px 3fr;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
 .searchbar-container {
-    grid-column: 1/3;
+    grid-column:2/3;
     grid-row: 1/2;
 }
-/* Dashboard on the left */
 .dashboard-container{
     grid-column: 1/2;
     text-align: center;
-    grid-row: 1/3;
+    grid-row: 1/4;
 }
-/* UploadBar at the bottom, spanning full width */
 .uploadbar-container{
-    grid-column: 1/3;
+    grid-column: 2/3;
     grid-row:3/4;
+}
+.nav-link:hover {
+    height: 70px;
+    cursor: pointer;
+    background-color: white;
 }

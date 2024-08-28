@@ -8,7 +8,7 @@ function SearchBar() {
   return (
     <div className="search-bar-container">
       <Form className="search-bar">
-        <InputGroup className="my-3">
+        <InputGroup className="m-2">
          <Form.Control placeholder="Search" />
         </InputGroup>
       </Form>

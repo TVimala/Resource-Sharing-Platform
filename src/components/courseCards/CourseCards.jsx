@@ -11,8 +11,8 @@ function CourseCards({cardData}) {
       <div className="card">
         <div className="card-body">
         <Link to={card.link} className="card-link">
-          <div className="card-background" 
-            style={{ backgroundImage: `url(${card.image})` }}
+        <div className="card-background" 
+            style={{ backgroundImage: `url(${card.image})`}}
           />
           <div className="card-text">
             {card.domain}

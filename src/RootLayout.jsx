@@ -7,9 +7,9 @@ import UploadBar from "./components/uploadBar/UplaodBar"
 function RootLayout() {
   return (
     <div>
-      <Header/>
-       <div style={{minHeight:'90vh'}}> <Outlet/></div>
-      {/* <div className="grid-container">
+      {/* <Header/>
+       <div style={{minHeight:'90vh'}}> <Outlet/></div> */}
+      <div className="grid-container">
       <div className="searchbar-container">
         <SearchBar />
       </div>
@@ -19,7 +19,7 @@ function RootLayout() {
       <div className="uploadbar-container">
         <UploadBar />
       </div>
-    </div> */}
+    </div>
     </div>
   )
 }
