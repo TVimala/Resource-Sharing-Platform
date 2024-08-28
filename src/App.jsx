@@ -8,6 +8,7 @@ import Profile from './components/profile/Profile'
 import Saved from './components/saved/Saved'
 import RootLayout from './RootLayout'
 import RoutingError from './components/RoutingError'
+import Uploads from './components/uploads/Upload'
 function App({children}) {
   const browserRouter = createBrowserRouter([
       {
@@ -34,6 +35,9 @@ function App({children}) {
           },{
             path:'/profile',
             element:<Profile/>
+          },{
+            path:'/uploads',
+            element:<Uploads/>
           }
         ]
       }

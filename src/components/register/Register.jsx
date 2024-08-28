@@ -16,20 +16,24 @@ function Register() {
     async function onUserRegister(newUser){
         try{
         console.log(newUser)
-          let res=await fetch("http://localhost:4000/user-api/user",{
+          let res=await fetch("http://localhost:4000/users",{
           method:'POST',
           headers:{"Content-type":"application/json"},
           body:JSON.stringify(newUser)
         })
-    
-        let msg=await res.json()
-        console.log(msg)
-        if(msg.message==="user created"){
+        if(res.status===201)
+          //navigate to home page
           navigate('/login')
-        }
-        else{
-          setErr(msg.message)
-          }
+          
+        // let msg=await res.json()
+        // console.log(msg)
+        // if(msg.message==="user created"){
+        //   navigate('/login')
+        // }
+        // else{
+        //   setErr(msg.message)
+        //   }
+
       }
       catch(err){
         console.log(err)
