@@ -9,14 +9,23 @@ import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 function Login() {
     let { register, handleSubmit, formState: { errors } } = useForm();
     let navigate = useNavigate();
+    let [userCredErr,setUserCredErr]=useState('')
+
     const [showPassword, setShowPassword] = useState(false);
 
-    const onSubmit = (data) => {
-      console.log(data);
-      // Handle login logic here, e.g., API call
-      // After successful login, navigate to another page
-      // navigate('/dashboard');
+    async function onLogin(userCred){
+      console.log(userCred);
+      let res=await fetch(
+        `http://localhost:4000/users?username=${userCred.username}&password=${userCred.password}`)
+      let data=await res.json()
+      if(data.length===0){
+        setUserCredErr('Invalid Credintialas')
+      }
+     else{
+      navigate('/profile',{state:data[0]})
+     }
     };
+
     const handleTogglePassword = () => {
       setShowPassword(!showPassword);
     };
@@ -24,9 +33,11 @@ function Login() {
   return (
     <>
     <h1 className="text-center mb-4">Login</h1>
+    {userCredErr.length!==0&&<p className='fs-2 text-danger text-center'>{userCredErr}</p>}
+
     <div className="row">
       <div className="col-11 col-sm-10 col-md-6 mx-auto">
-        <form onSubmit={handleSubmit(onSubmit)} className="login-form rounded p-5">
+        <form onSubmit={handleSubmit(onLogin)} className="login-form rounded p-5">
           <div className="mb-3">
             <label htmlFor="username" className="form-label">Username</label>
             <input 
