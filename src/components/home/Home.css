@@ -25,10 +25,18 @@
     border: 3px solid rgb(20, 19, 19);
     font-size: 40px;
   }
+  
  .resource{
   font-weight: 600;
   font-size:5rem;
  }
+
+ .courseimg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
   @media (max-width: 768px) {
     .image {
       width: 100%; /* Full width on smaller screens */

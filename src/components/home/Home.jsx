@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className='home-container'>
       <h1 className='resource p-5'>Resource-Sharing-Platform</h1>
-     <button className=" start btn">START</button>
+     <button className="start btn">START</button>
        <div className='courseimg m-5 flex'>
        <CourseCards cardData={cardData}/>
        </div>
