@@ -6,6 +6,44 @@
       "password": "admin",
       "email": "arjun@gmail.com",
       "number": "9347364669"
+    },
+    {
+      "id": "be67",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "9e5f",
+      "username": "tej",
+      "password": "tej",
+      "email": "22501a05i5@pvpsit.ac.in",
+      "number": "9347364669"
+    },
+    {
+      "id": "2ee8",
+      "username": "tej",
+      "password": "tej",
+      "email": "22501a05i5@pvpsit.ac.in",
+      "number": "9347364669"
+    },
+    {
+      "id": "cf49",
+      "username": "tej",
+      "password": "tej",
+      "email": "22501a05i5@pvpsit.ac.in",
+      "number": "9347364669"
+    },
+    {
+      "id": "7ef0",
+      "username": "tej",
+      "password": "tej",
+      "email": "22501a05i5@pvpsit.ac.in",
+      "number": "9347364669"
+    },
+    {
+      "id": "8986",
+      "username": "admin",
+      "password": "admin"
     }
   ]
 }

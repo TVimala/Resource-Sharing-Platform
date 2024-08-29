@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './CourseCards.css'
-// import cardData from '../cardData';
 
 function CourseCards({cardData}) {
   return (

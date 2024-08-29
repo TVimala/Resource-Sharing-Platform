@@ -1,9 +1,7 @@
-.search-bar-container {
-    display: flex;
-    justify-content: flex-end; /* Aligns the search bar to the right */
-  }
+
   .search-bar {
-    /* flex: 1; */
-    width: 74%; /* Ensures the search bar doesn't overflow */
-  }
-  
+    width: 99%;
+   }
+   .search-bar-container{
+    overflow: hidden;
+   }

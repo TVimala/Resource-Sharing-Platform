@@ -21,19 +21,15 @@ function Register() {
           headers:{"Content-type":"application/json"},
           body:JSON.stringify(newUser)
         })
-        if(res.status===201)
-          //navigate to home page
+        
+        let msg=await res.json()
+        console.log(msg)
+        if(msg.message==="user created"){
           navigate('/login')
-          
-        // let msg=await res.json()
-        // console.log(msg)
-        // if(msg.message==="user created"){
-        //   navigate('/login')
-        // }
-        // else{
-        //   setErr(msg.message)
-        //   }
-
+        }
+        else{
+          setErr(msg.message)
+          }
       }
       catch(err){
         console.log(err)
@@ -41,7 +37,6 @@ function Register() {
       }
      }
     
-
     return (
       <>
         <h1 className='text-center mb-3'>Register</h1>
