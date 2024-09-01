@@ -23,7 +23,7 @@ function Login() {
      }
      useEffect(()=>{
        if(isLogin===true){
-         navigate('/profile')
+        //  navigate('/profile')
        }
        },[isLogin])
 

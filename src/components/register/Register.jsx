@@ -16,7 +16,7 @@ function Register() {
     async function onUserRegister(newUser){
         try{
         console.log(newUser)
-          let res=await fetch("http://localhost:4000/users",{
+          let res=await fetch("http://localhost:4000/user-api/user",{
           method:'POST',
           headers:{"Content-type":"application/json"},
           body:JSON.stringify(newUser)
