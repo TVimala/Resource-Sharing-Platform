@@ -1,6 +1,7 @@
 import React from 'react'
 import './Login.css'
-import { useState } from 'react';
+import { useState,useContext,useEffect } from 'react';
+import { userLoginContext } from '../../contexts/userLoginContext';
 import {useForm} from 'react-hook-form'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +9,7 @@ import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 function Login() {
     let { register, handleSubmit, formState: { errors } } = useForm();
+    let {loginUser,isLogin}=useContext(userLoginContext)
     let navigate = useNavigate();
     let [userCredErr,setUserCredErr]=useState('')
 
@@ -15,16 +17,15 @@ function Login() {
 
     async function onLogin(userCred){
       console.log(userCred);
-      let res=await fetch(
-        `http://localhost:4000/users?username=${userCred.username}&password=${userCred.password}`)
-      let data=await res.json()
-      if(data.length===0){
-        setUserCredErr('Invalid Credintialas')
-      }
-     else{
-      navigate('/profile',{state:data[0]})
+      let res=await loginUser(userCred)
+      if(!isLogin)
+       setUserCredErr('Invalid username or password')
      }
-    };
+     useEffect(()=>{
+       if(isLogin===true){
+        //  navigate('/profile')
+       }
+       },[isLogin])
 
     const handleTogglePassword = () => {
       setShowPassword(!showPassword);
@@ -33,10 +34,14 @@ function Login() {
   return (
     <>
     <h1 className="text-center mb-4">Login</h1>
-    {userCredErr.length!==0&&<p className='fs-2 text-danger text-center'>{userCredErr}</p>}
 
     <div className="row">
       <div className="col-11 col-sm-10 col-md-6 mx-auto">
+        
+      {isLogin===false &&userCredErr.length!==0 &&(
+          <p className="fs-2 text-danger text-center">{userCredErr}</p>
+        )}
+
         <form onSubmit={handleSubmit(onLogin)} className="login-form rounded p-5">
           <div className="mb-3">
             <label htmlFor="username" className="form-label">Username</label>

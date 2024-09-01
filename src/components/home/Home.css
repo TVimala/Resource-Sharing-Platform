@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+    min-height: 100vh; 
     background-color:  #7Fa1c3;
   } 
   /* .image img {
@@ -23,12 +23,14 @@
     height: 80px;
     background-color: transparent;
     border: 3px solid rgb(20, 19, 19);
-    font-size: 40px;
   }
+  
  .resource{
   font-weight: 600;
   font-size:5rem;
  }
+
+
   @media (max-width: 768px) {
     .image {
       width: 100%; /* Full width on smaller screens */
