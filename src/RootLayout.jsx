@@ -33,5 +33,4 @@ function RootLayout() {
     </div>
   )
 }
-
 export default RootLayout
