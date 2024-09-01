@@ -1,15 +1,24 @@
 import Header from "./components/header/Header"
 import { Outlet } from "react-router-dom"
 import React from 'react'
+import { useContext } from "react"
 import DashBoard from "./components/dashboard/Dashboard"
 import SearchBar from "./components/searchBar/SearchBar"
 import UploadBar from "./components/uploadBar/UplaodBar"
+import { userLoginContext } from "./contexts/userLoginContext"
+
 function RootLayout() {
+  const { isLogin } = useContext(userLoginContext)
   return (
     <div>
-      {/* <Header/>
-       <div style={{minHeight:'90vh'}}> <Outlet/></div> */}
-      <div className="grid-container">
+      {isLogin===false?(
+        <>
+      <Header/>
+       <div style={{minHeight:'90vh'}}> <Outlet/>
+       </div>
+       </>
+      ):(
+       <div className="grid-container">
       <div className="searchbar-container">
         <SearchBar />
       </div>
@@ -19,7 +28,8 @@ function RootLayout() {
       <div className="uploadbar-container">
         <UploadBar />
       </div>
-    </div>
+    </div> 
+    )}
     </div>
   )
 }

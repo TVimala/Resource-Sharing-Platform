@@ -4,10 +4,9 @@ function UplaodBar() {
   const [file,setfile]=useState();
   return (
     <div className='uploadbar'>
-      <input type="file" id='uploadbtn' onChange={(e)=>setfile(e.target.files[0])} />
+      <input type="file" onChange={(e)=>setfile(e.target.files[0])} />
       {/* <button><FiUpload />
       </button> */}
-      {/* <label htmlFor="uploadbtn">UPLOAD</label> */}
     </div>
   )
 }

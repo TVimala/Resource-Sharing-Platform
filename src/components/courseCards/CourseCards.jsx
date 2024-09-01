@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './CourseCards.css'
-import cardData from '../cardData';
 
 function CourseCards({cardData}) {
   return (
     <div className="row px-5">
-    {cardData.map((card => (
+    {cardData.map((card) => (
      <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={card.id}>
       <div className="card">
         <div className="card-body">
@@ -21,7 +20,7 @@ function CourseCards({cardData}) {
       </div>
       </div>
       </div>
-    )))}
+    ))}
     </div>
   )
 }

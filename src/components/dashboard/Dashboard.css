@@ -10,15 +10,30 @@
     align-items: center;
     justify-content: space-evenly;
 }
+.nav-item {
+    display: flex;
+    align-items: center;
+  }
+
 .dashboard{
     height: 100%;
     display: flex;
     flex-direction: column;
     background-color: #7Fa1c3;
 }
+
 .links{
    list-style : none;
 }
+
+
+/* .nav-link:hover {
+
+    background-color: white;
+} */
+
+
+/* SearchBar at the top */
 .grid-container {
 display: grid;
   grid-template-columns: 300px 3fr;
@@ -26,7 +41,7 @@ display: grid;
   min-height: 100vh;
 }
 .searchbar-container {
-    grid-column:2/3;
+    grid-column: 2/3;
     grid-row: 1/2;
 }
 .dashboard-container{
