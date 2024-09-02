@@ -13,26 +13,20 @@
 .nav-item {
     display: flex;
     align-items: center;
-  }
-
+}
 .dashboard{
     height: 100%;
     display: flex;
     flex-direction: column;
     background-color: #7Fa1c3;
 }
-
 .links{
    list-style : none;
 }
-
-
 /* .nav-link:hover {
 
     background-color: white;
 } */
-
-
 /* SearchBar at the top */
 .grid-container {
 display: grid;
@@ -53,8 +47,12 @@ display: grid;
     grid-column: 2/3;
     grid-row:3/4;
 }
-.nav-link:hover {
+.resourcelist-container{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+/* .nav-link:hover {
     height: 70px;
     cursor: pointer;
     background-color: white;
-}
+} */
