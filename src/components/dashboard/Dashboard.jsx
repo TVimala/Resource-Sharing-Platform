@@ -7,11 +7,14 @@ import { FaRegBookmark } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { ImBooks } from "react-icons/im";
-
+import { useContext } from 'react';
+import { userLoginContext } from '../../contexts/userLoginContext';
 function Dashboard() {
+  let {logoutUser,currentUser}=useContext(userLoginContext)
+
   return (
     <div className='dashboard'>
-      <h1>Username</h1>
+      <h1>{currentUser.username}</h1>
       <div className='nav'>
         <ul className='links'>
           <li className='nav-item'>
@@ -36,7 +39,7 @@ function Dashboard() {
           </li>
           <li className='nav-item'>
           <RiLogoutCircleLine  className='fs-2'/>
-            <Link to="/logout" className='nav-link text-dark fs-4'>Logout</Link>
+            <Link to="" className='nav-link text-dark fs-4' onClick={logoutUser}>Logout</Link>
           </li>
         </ul>
       </div>
