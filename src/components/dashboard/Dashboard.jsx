@@ -6,9 +6,9 @@ import { FiUpload } from "react-icons/fi";
 import { FaRegBookmark } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { ImBooks } from "react-icons/im";
 import { useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
-
 function Dashboard() {
   let {logoutUser,currentUser}=useContext(userLoginContext)
 
@@ -26,6 +26,7 @@ function Dashboard() {
             <Link to="/uploads" className='nav-link text-dark fs-4'>Uploads</Link>
           </li>
           <li className='nav-item'>
+          <ImBooks  className='fs-2'/>
             <Link to='' className='nav-link text-dark fs-4'>Courses</Link>
           </li>
           <li className='nav-item'>

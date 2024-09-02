@@ -13,25 +13,20 @@
 .nav-item {
     display: flex;
     align-items: center;
-  }
-
+}
 .dashboard{
     height: 100%;
     display: flex;
     flex-direction: column;
     background-color: #7Fa1c3;
 }
-
 .links{
    list-style : none;
 }
-
 /* .nav-link:hover {
 
     background-color: white;
 } */
-
-
 /* SearchBar at the top */
 .grid-container {
 display: grid;
@@ -43,14 +38,21 @@ display: grid;
     grid-column: 2/3;
     grid-row: 1/2;
 }
-/* Dashboard on the left */
 .dashboard-container{
     grid-column: 1/2;
     text-align: center;
     grid-row: 1/4;
 }
-/* UploadBar at the bottom, spanning full width */
 .uploadbar-container{
     grid-column: 2/3;
     grid-row:3/4;
 }
+.resourcelist-container{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+/* .nav-link:hover {
+    height: 70px;
+    cursor: pointer;
+    background-color: white;
+} */
