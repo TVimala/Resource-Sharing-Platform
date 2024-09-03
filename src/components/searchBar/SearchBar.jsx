@@ -4,30 +4,16 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './SearchBar.css';
 import { IoIosSearch } from "react-icons/io";
-
-function SearchBar() {
-  const [tags, setTags] = useState([]);
+import FileDisplay from '../filedisplay/FileDisplay';
+function SearchBar({ files = [] }) {  
   const [input, setInput] = useState('');
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && input.trim()) {
-      e.preventDefault();
-      if (!tags.includes(input.trim())) {
-        setTags([...tags, input.trim()]);
-      }
-      setInput('');
-    }
-  };
-
-  const removeTag = (tagToRemove) => {
-    setTags(tags.filter(tag => tag !== tagToRemove));
-  };
-
+  const filteredFiles = files.filter(file => 
+    file.tags.some(tag => tag.toLowerCase().includes(input.toLowerCase()))
+  );
   return (
     <div className="search-bar-container">
       <Form className="search-bar">
         <InputGroup className="m-2">
-         
           <InputGroup.Text>
             <IoIosSearch />
           </InputGroup.Text>
@@ -35,18 +21,23 @@ function SearchBar() {
             placeholder="Search by tags"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
           />
         </InputGroup>
-        <div className="tags-container">
-          {tags.map((tag, index) => (
-            <div key={index} className="tag">
-              {tag}
-              <span className="tag-close" onClick={() => removeTag(tag)}>x</span>
-            </div>
-          ))}
-        </div>
       </Form>
+      <div className="file-display-container">
+        {filteredFiles.length > 0 ? (
+          filteredFiles.map((file, index) => (
+            <FileDisplay 
+              key={index} 
+              driveLink={file.driveLink} 
+              fileName={file.fileName} 
+              tags={file.tags}
+            />
+          ))
+        ) : (
+          <p>No files match your search.</p>
+        )}
+      </div>
     </div>
   );
 }
