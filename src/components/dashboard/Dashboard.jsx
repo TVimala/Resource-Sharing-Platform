@@ -14,7 +14,8 @@ function Dashboard() {
 
   return (
     <div className='dashboard'>
-      <h1>{currentUser.username}</h1>
+      {/* <h1>{currentUser.username}</h1> */}
+      <h1>Username</h1>
       <div className='nav'>
         <ul className='links'>
           <li className='nav-item'>
