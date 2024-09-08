@@ -5,11 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './SearchBar.css';
 import { IoIosSearch } from "react-icons/io";
 import FileDisplay from '../filedisplay/FileDisplay';
+
 function SearchBar({ files = [] }) {  
   const [input, setInput] = useState('');
+
   const filteredFiles = files.filter(file => 
     file.tags.some(tag => tag.toLowerCase().includes(input.toLowerCase()))
   );
+
   return (
     <div className="search-bar-container">
       <Form className="search-bar">
@@ -29,9 +32,10 @@ function SearchBar({ files = [] }) {
           filteredFiles.map((file, index) => (
             <FileDisplay 
               key={index} 
-              driveLink={file.driveLink} 
+              driveLink={file.url} 
               fileName={file.fileName} 
               tags={file.tags}
+              uploaderName={file.uploaderName}
             />
           ))
         ) : (
