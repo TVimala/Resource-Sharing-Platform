@@ -13,9 +13,13 @@ function SearchBar({ files = [] }) {
     file.tags.some(tag => tag.toLowerCase().includes(input.toLowerCase()))
   );
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="search-bar-container">
-      <Form className="search-bar">
+      <Form className="search-bar" onSubmit={handleSubmit}>
         <InputGroup className="m-2">
           <InputGroup.Text>
             <IoIosSearch />
@@ -27,13 +31,13 @@ function SearchBar({ files = [] }) {
           />
         </InputGroup>
       </Form>
-      <div className="file-display-container">
+      <div className="file-display-container mt-3">
         {filteredFiles.length > 0 ? (
           filteredFiles.map((file, index) => (
-            <FileDisplay 
-              key={index} 
-              driveLink={file.url} 
-              fileName={file.fileName} 
+            <FileDisplay
+              key={index}
+              driveLink={file.url}
+              fileName={file.fileName}
               tags={file.tags}
               uploaderName={file.uploaderName}
             />

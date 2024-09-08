@@ -10,6 +10,7 @@ import RootLayout from './RootLayout'
 import RoutingError from './components/RoutingError'
 import Uploads from './components/uploads/Upload'
 import CourseDetails from './components/courseDetails/CourseDetails'
+
 function App({children}) {
   const browserRouter = createBrowserRouter([
       {

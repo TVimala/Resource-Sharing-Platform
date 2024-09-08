@@ -40,8 +40,8 @@ function CourseDetails () {
         <p>No materials available for this course. Please check back later or contact the instructor for more details.</p>
       ) : (
         <div>
-            <SearchBar />
-          {files.map((file, index) => (
+            <SearchBar files={files}/>
+          {/* {files.map((file, index) => (
             <FileDisplay
                key={index}
               driveLink={file.url}
@@ -49,7 +49,7 @@ function CourseDetails () {
               tags={file.tags}
               uploaderName={file.uploaderName}
             />
-          ))}
+          ))} */}
         </div>
       )}
     </div>
