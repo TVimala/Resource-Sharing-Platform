@@ -6,11 +6,11 @@ function Header() {
   return (
     <div className='header'>
       <div className='logo'>
-        <h3>ResoLink</h3>
+        <h2>ResoLink</h2>
       </div>
       <ul className='nav justify-content-end'>
           <li className='nav-item'>
-            <Link to="login" className='nav-link text-white'><h5>Login</h5></Link>
+            <Link to="login" className='nav-link text-white'><h3>Login</h3></Link>
           </li>
       </ul>
     </div>
