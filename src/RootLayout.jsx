@@ -17,14 +17,14 @@ function RootLayout() {
 
   return (
     <div>
-      {/* {isLogin===false?(
+     
         <>
       <Header/>
        <div style={{minHeight:'90vh'}}> <Outlet/>
        </div>
        </>
-      ):( */}
-       <div className="grid-container">
+      
+       {/* <div className="grid-container">
       <div className="searchbar-container">
         <SearchBar />
       </div>
@@ -37,8 +37,7 @@ function RootLayout() {
       <div className="uploadbar-container">
       <UploadBar addResource={addResource} />
       </div>
-    </div> 
-    {/* )} */}
+    </div>  */}
     </div>
   )
 }
