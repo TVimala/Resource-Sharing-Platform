@@ -9,9 +9,18 @@ import FileDisplay from '../filedisplay/FileDisplay';
 function SearchBar({ files = [] }) {  
   const [input, setInput] = useState('');
 
-  const filteredFiles = files.filter(file => 
-    file.tags.some(tag => tag.toLowerCase().includes(input.toLowerCase()))
-  );
+  // const filteredFiles = files.filter(file => 
+  //   file.tags.some(tag => tag.toLowerCase().includes(input.toLowerCase()))
+  // );
+
+
+  // Ensure files is always an array and check for the presence of tags
+  const filteredFiles = Array.isArray(files) 
+    ? files.filter(file => 
+        Array.isArray(file.tags) &&
+        file.tags.some(tag => tag.toLowerCase().includes(input.toLowerCase()))
+      )
+    : [];
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -1,6 +1,7 @@
 import React from 'react';
 import './FileDisplay.css';
 import { FaFileAlt } from 'react-icons/fa';
+import { RiBookmarkLine } from "react-icons/ri";
 
 function FileDisplay({ driveLink, fileName, tags, uploaderName }) {
   return (

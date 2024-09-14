@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import FileDisplay from '../filedisplay/FileDisplay'; // Import the FileDisplay component
+// import FileDisplay from '../filedisplay/FileDisplay'; // Import the FileDisplay component
 import SearchBar from '../searchBar/SearchBar'
+import UploadBar from '../uploadBar/UplaodBar';
+import {userLoginContext} from '../../contexts/userLoginContext'
 
 function CourseDetails () {
 
   let { domain } = useParams(); // Extract the domain from the URL
   let [files, setFiles] = useState([]); 
   let [error, setError] = useState(null); // State to handle errors
+
+  const { username, userId } = useContext(userLoginContext);
+  console.log('username:', username);
+  console.log('userId:', userId);
 
   // Optionally format the domain string for display
   const formattedDomain = domain.replace(/-/g, ' ');
@@ -52,6 +58,10 @@ function CourseDetails () {
           ))} */}
         </div>
       )}
+      <UploadBar  
+        courseName={domain} 
+        username={username} 
+        userId={userId} />
     </div>
   );
 };
