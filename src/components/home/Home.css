@@ -1,5 +1,4 @@
 .home-container {
-   
     align-items: center;
     justify-content: center;
     min-height: 100vh; 
@@ -22,6 +21,7 @@
     height: 80px;
     background-color: transparent;
     border: 3px solid rgb(20, 19, 19);
+
   }
   
  .resource{
