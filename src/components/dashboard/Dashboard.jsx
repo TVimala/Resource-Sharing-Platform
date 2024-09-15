@@ -23,12 +23,12 @@ function Dashboard() {
           <Link to="/profile" className='nav-link text-dark fs-4'>Profile</Link>
         </li>
         <li className='nav-item'>
-          <FiUpload className='fs-2'/>
-          <Link to="/uploads" className='nav-link text-dark fs-4'>Uploads</Link>
-        </li>
-        <li className='nav-item'>
           <ImBooks className='fs-2'/>
           <Link to='/courses' className='nav-link text-dark fs-4'>Courses</Link>
+        </li>
+        <li className='nav-item'>
+          <FiUpload className='fs-2'/>
+          <Link to="/uploads" className='nav-link text-dark fs-4'>Uploads</Link>
         </li>
         <li className='nav-item'>
           <FaRegBookmark className='fs-2'/>

@@ -25,7 +25,7 @@ function App({children}) {
         children:[
           {
             path:'',
-            element:<Home/>
+            element:isLogin ? <Navigate to="/profile" replace /> : <Home />
           },
           {
             path: '/login',
