@@ -8,6 +8,7 @@ import SearchBar from "./components/searchBar/SearchBar"
 import UploadBar from "./components/uploadBar/UplaodBar"
 import { userLoginContext } from "./contexts/userLoginContext"
 import ResourceList from "./components/resourcelist/ResourceList"
+import UploadsDisplay from "./components/uploads/Upload"
 function RootLayout() {
   const { isLogin } = useContext(userLoginContext)
   const [resources, setResources] = useState([]);
@@ -20,11 +21,11 @@ function RootLayout() {
      
         <>
       <Header/>
-       <div style={{minHeight:'90vh'}}> <Outlet/>
-       </div>
+       {/* <div style={{minHeight:'90vh'}}> <Outlet/>
+       </div> */}
        </>
       
-       {/* <div className="grid-container">
+       <div className="grid-container">
       <div className="searchbar-container">
         <SearchBar />
       </div>
@@ -37,7 +38,8 @@ function RootLayout() {
       <div className="uploadbar-container">
       <UploadBar addResource={addResource} />
       </div>
-    </div>  */}
+    </div> 
+    <UploadsDisplay/>
     </div>
   )
 }
