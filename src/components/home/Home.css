@@ -30,18 +30,4 @@
     font-weight:500;
     font-style: normal;
     font-size: 6rem;
-  }
-  @media (max-width: 768px) {
-    .image {
-      width: 100%; /* Full width on smaller screens */
-      max-width: 100%; /* Ensure it doesn't exceed viewport width */
-      height: auto; /* Adjust height automatically */
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .image img {
-      width: 100%; /* Full width on very small screens */
-    }
-  }
-  
+ }

@@ -1,20 +1,56 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./UploadBar.css"; 
-const UploadBar = ({ addResource }) => {
+
+const UploadBar = ({ courseName,username, userId }) => {
+
   const [link, setLink] = useState("");
   const [tags, setTags] = useState("");
+  const [fileName, setFileName] = useState("");
   const [uniqueTags, setUniqueTags] = useState(new Set());
+  const [uploadStatus, setUploadStatus] = useState("");
 
-  const handleSubmit = (e) => {
+ async function handleSubmit(e){
     e.preventDefault();
-    const resource = { link, tags: Array.from(uniqueTags) };
-    addResource(resource);
+
+    const resource = { 
+      url: link, 
+      fileName,
+      tags: Array.from(uniqueTags),
+      uploaderName: username,
+      userId
+    };
+    console.log('Resource to be uploaded:', resource); 
+    console.log(courseName)
+  try {
+    const response = await fetch(`http://localhost:4000/course-api/${courseName}/files`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(resource),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log("File uploaded successfully:", data);
+
+    // Update the UI to show success
+    setUploadStatus("File uploaded successfully!");
+  
+    
+    // Reset form fields
     setLink("");
+    setFileName("");
     setTags("");
     setUniqueTags(new Set());
-  };
 
+  } catch (err) {
+    console.error("Error uploading file:", err);
+    setUploadStatus(`Error uploading file: ${err.message}`);
+  }
+};
   const handleTagInput = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -37,9 +73,15 @@ const UploadBar = ({ addResource }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
-        {/* <label htmlFor="driveLink" className="form-label">
-          Drive Link:
-        </label> */}
+        <input type="text" 
+        className="form-control"
+        value={fileName}
+        onChange={(e) => setFileName(e.target.value)}
+        required
+        placeholder="File Name"
+        />
+      </div>
+      <div className="mb-3">
         <input 
           type="text"
           className="form-control"
@@ -51,9 +93,6 @@ const UploadBar = ({ addResource }) => {
         />
       </div>
       <div className="mb-3">
-        {/* <label htmlFor="tags" className="form-label">
-          Tags:
-        </label> */}
         <input
           type="text"
           className="form-control"
@@ -83,6 +122,7 @@ const UploadBar = ({ addResource }) => {
           Upload
         </button>
       </div>
+      {uploadStatus && <div className="alert mt-3">{uploadStatus}</div>}
     </form>
   );
 };

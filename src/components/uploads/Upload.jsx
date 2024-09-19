@@ -1,49 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './Upload.css';
+import React from 'react'
+import { useState,useContext,useEffect } from 'react'
+import { userLoginContext } from '../../contexts/userLoginContext'
+import FileDisplay from '../filedisplay/FileDisplay'
 
-const UploadsDisplay = ({ userId }) => {
-  const [uploadCount, setUploadCount] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function Upload() {
+  const { currentUser } = useContext(userLoginContext)
+  const [uploads,setUploads] =useState([])
+  const [msg,setMsg] = useState("")
 
-  useEffect(() => {
-    // Fetch the number of uploads from the backend
-    const fetchUploads = async () => {
-      try {
-        const response = await axios.get(`/users/${userId}/uploads`);
-        setUploadCount(response.data.uploadCount);
-        setLoading(false);
-      } catch (err) {
-        setError('Failed to fetch upload count');
-        setLoading(false);
+  async function fetchUploads(){
+    try{
+      let res=await fetch(`http://localhost:4000/user-api/user-uploads/${currentUser.username}`)
+      let data=await res.json()
+      if(res.ok){
+        setUploads(data.payload)
+        setMsg("")
       }
-    };
-
-    fetchUploads();
-  }, [userId]);
-
-  if (loading) {
-    return <div>Loading...</div>;
+      else{
+        setMsg(data.error)
+        }
+      }
+        catch(err){
+          console.log(err)
+          setMsg("An error occured while fetching uploads")
+    }
   }
 
-  if (error) {
-    return <div>{error}</div>;
-  }
+  
+    useEffect(() => {
+      if(currentUser && currentUser.username){
+      fetchUploads()
+      }
+    }, [currentUser.username])
 
   return (
-    <div className="upload-container">
-      <div className="user-info">
-        <img src="user-avatar.jpg" alt="User Avatar" className="user-avatar" />
-        <h2 className="user-name">John Doe</h2>
-      </div>
-      <div className="upload-stats">
-        <p className="upload-count">
-          Uploads: <span className="count">{uploadCount}</span>
-        </p>
-      </div>
-    </div>
-  );
-};
+    <>
+    <h1>Your Uploads</h1>
+    {msg && <p className="error-message">{msg}</p>}
+    {uploads && uploads.length > 0 ? (
+        uploads.map((file, index) => (
+          <FileDisplay
+            key={index}
+            driveLink={file.driveLink}    // Pass file URL
+            fileName={file.fileName}      // Pass file name
+            tags={file.tags}              // Pass file tags
+            uploaderName={file.uploaderName} // Pass uploader's name
+          />
+        ))
+      ) : (
+        <p>No uploads found.</p>
+      )}
+    </>
+  )
+}
 
-export default UploadsDisplay;
+export default Upload
