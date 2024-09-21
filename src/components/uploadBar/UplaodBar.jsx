@@ -10,6 +10,10 @@ const UploadBar = ({ courseName,username, userId }) => {
   const [uniqueTags, setUniqueTags] = useState(new Set());
   const [uploadStatus, setUploadStatus] = useState("");
 
+ // New state to hold likes and saved counts (initialized to 0)
+ const [likes, setLikes] = useState(0);
+ const [saved, setSaved] = useState(0);
+
  async function handleSubmit(e){
     e.preventDefault();
 
@@ -18,7 +22,9 @@ const UploadBar = ({ courseName,username, userId }) => {
       fileName,
       tags: Array.from(uniqueTags),
       uploaderName: username,
-      userId
+      userId,
+      likes,
+      saved
     };
     console.log('Resource to be uploaded:', resource); 
     console.log(courseName)
@@ -45,6 +51,8 @@ const UploadBar = ({ courseName,username, userId }) => {
     setFileName("");
     setTags("");
     setUniqueTags(new Set());
+    setLikes(0); // Reset likes count
+    setSaved(0); // Reset saved count
 
   } catch (err) {
     console.error("Error uploading file:", err);
