@@ -1,14 +1,17 @@
-import React from 'react';
+import React from 'react'
+import Uploadgraph from '../uploadGraph/Uploadgraph'
+import { userLoginContext } from '../../contexts/userLoginContext';
+import { useContext } from 'react';
 
-function Profile({ uploadsLength }) {
-  console.log("Uploads length in Profile:", uploadsLength);
+function Profile(){
+  let {currentUser}=useContext(userLoginContext)
 
   return (
-    <div className='profile-upload'>
-      {/* Display the length of uploads passed from Upload.jsx */}
-      <h1>Number of Uploads: {uploadsLength}</h1>
-    </div>
-  );
+   <div>
+    Profile
+    <Uploadgraph username={currentUser.username} />
+  </div> 
+  )
 }
 
 export default Profile;
