@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { LineChart, BarChart, Line, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import {userLoginContext} from '../../contexts/userLoginContext'
 import { useContext } from 'react';
 
@@ -33,16 +33,16 @@ const Uploadgraph = ({ username }) => {
   }, [username]);
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      {/* <LineChart data={uploadData}>
+    <ResponsiveContainer width="70%" height={200}>
+      <LineChart data={uploadData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
         <Line dataKey="uploads" fill="#8884d8" />
-      </LineChart> */}
+      </LineChart>
 
-      <LineChart width={500} height={300} data={uploadData}>
+       <LineChart width={500} height={300} data={uploadData}>
     <XAxis dataKey="date"/>
     <YAxis/>
     <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
