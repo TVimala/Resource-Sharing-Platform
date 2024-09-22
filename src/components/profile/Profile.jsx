@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
+import Uploadgraph from '../uploadgraph/Uploadgraph';
+import Skillbar from '../skillbar/Skillbar';
+import './Profile.css'
 function Profile() {
   const { currentUser } = useContext(userLoginContext);
   const [uploads, setUploads] = useState({ uploadCount: 0 });
@@ -9,7 +12,6 @@ function Profile() {
     try {
       let res=await fetch(`http://localhost:4000/user-api/user-uploads/${currentUser.username}`);
       let data = await res.json();
-      console.log(data); // Log the data to check its structure
       if (res.ok) {
         if (data.payload && data.payload.uploadCount !== undefined) {
           setUploads({ uploadCount: data.payload.uploadCount }); // Correctly set state
@@ -81,47 +83,25 @@ function Profile() {
         }
       }, [currentUser.username])
   return (
-    <div className="container d-flex flex-column m-3"> 
-      <div className="card text-center shadow-sm mb-3"> {/* Adds a shadow effect */}  
-        <div className="card-header bg-primary text-white"> {/* Bootstrap card header with a primary background */}
-        <h3 className="mb-0">Profile</h3>
-        </div>
-        <div className="card-body d-flex justify-content-between align-items-center">
-          <div className="card-title">
-          <h5>Number of Uploads:{uploads.uploadCount}</h5>
-          </div>
-        </div>
-        <div className="card-footer text-muted">
-          Keep Uploading files!
-        </div>
-      </div>
-
-      <div className="card text-center shadow-sm mb-3"> {/* Adds a shadow effect */}
-        <div className="card-header bg-primary text-white"> {/* Bootstrap card header with a primary background */}
-          <h3 className="mb-0">Profile</h3>
-        </div>
-        <div className="card-body d-flex justify-content-between align-items-center">
-          <div className="card-title">
-          <h5>Number of Likes:{liked.likedcount}</h5>
-          </div>
-        </div>
-        <div className="card-footer text-muted">
-          Keep going to like files!
-        </div>
-      </div>
-
-      <div className="card text-center shadow-sm"> {/* Adds a shadow effect */}
-        <div className="card-header bg-primary text-white"> {/* Bootstrap card header with a primary background */}
-          <h3 className="mb-0">Profile</h3>
-        </div>
-        <div className="card-body d-flex justify-content-between align-items-center">
-          <h5 className="card-title">Number of Saved Files:{saved.savedcount}</h5>
-          <p className="card-text fs-5"></p> 
-        </div>
-        <div className="card-footer text-muted">
-          Keep saving files!
-        </div>
-      </div>
+    <div className="container d-flex flex-column justify-content-evenly">
+    {/* Uploads Circle */}
+    <div className="circle text-center p-2">
+      <h5>Uploads</h5>
+      <span className="upload-count">{uploads.uploadCount}</span>
+    </div>
+  
+    {/* Likes Circle */}
+    <div className="circle text-center p-2">
+      <h5>Likes</h5>
+      <span className="upload-count">{liked.likedcount}</span>
+    </div>
+  
+    {/* Saved Files Circle */}
+    <div className="circle text-center p-2">
+      <h5>Saved</h5>
+      <span className="upload-count">{saved.savedcount}</span>
+    </div>
+      <Uploadgraph></Uploadgraph>
     </div>
   );
 }
