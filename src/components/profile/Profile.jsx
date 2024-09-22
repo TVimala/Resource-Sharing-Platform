@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
 import Uploadgraph from '../uploadgraph/Uploadgraph';
 import Skillbar from '../skillbar/Skillbar';
+import Streak from '../streak/Streak';
 import './Profile.css'
 function Profile() {
   const { currentUser } = useContext(userLoginContext);
@@ -102,8 +103,8 @@ function Profile() {
       <span className="upload-count">{saved.savedcount}</span>
     </div>
       <Uploadgraph></Uploadgraph>
+      <Streak></Streak>
     </div>
   );
 }
-
 export default Profile;
