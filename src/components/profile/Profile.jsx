@@ -1,44 +1,56 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
 import Uploadgraph from '../uploadgraph/Uploadgraph';
-import Skillbar from '../skillbar/Skillbar';
+// import Skillbar from '../skillbar/Skillbar';
 import Streak from '../streak/Streak';
 import './Profile.css'
 function Profile() {
   const { currentUser } = useContext(userLoginContext);
   const [uploads, setUploads] = useState({ uploadCount: 0 });
   const [msg, setMsg] = useState('');
+  const [liked,setliked] =useState({likedcount:0})
 
-  async function fetchUploads(username) {
+  async function fetchUploads() {
+    let username = currentUser.username;
     try {
-      let res=await fetch(`http://localhost:4000/user-api/user-uploads/${currentUser.username}`);
+      let res = await fetch(`http://localhost:4000/user-api/user-uploads/${username}`);
       let data = await res.json();
+  
       if (res.ok) {
+        console.log("Payload:", data.payload);
         if (data.payload && data.payload.uploadCount !== undefined) {
-          setUploads({ uploadCount: data.payload.uploadCount }); // Correctly set state
+          // Set the uploadCount from the payload
+          console.log("Upload count:", data.payload.uploadCount);
+
+          setUploads({ uploadCount: data.payload.uploadCount });
           setMsg('');
         } else {
+          // Handle the case where uploadCount is missing in the response
           setMsg('Upload count not found in response');
         }
       } else {
-        setMsg(data.error);
+        // Handle server errors
+        setMsg(data.error || 'An error occurred on the server');
       }
     } catch (err) {
       console.log(err);
+      // Handle any network or unexpected errors
       setMsg('An error occurred while fetching uploads');
     }
   }
+  
 
   // Fetch uploads when the component mounts
   useEffect(() => {
     if (currentUser && currentUser.username) {
-      fetchUploads(currentUser.username);
+      fetchUploads();
     }
   }, [currentUser.username]);
   const [saved, setsaved] =useState({savedcount: 0 })
-  async function fetchsaved(username){
+  async function fetchsaved(){
+    let username=currentUser.username
     try{
-      let res=await fetch(`http://localhost:4000/user-api/user-saved/${currentUser.username}`)
+      let res=await fetch(`http://localhost:4000/user-api/user-saved/${username}`)
       let data=await res.json()
       if(res.ok){
         setsaved(data.payload)
@@ -58,10 +70,11 @@ function Profile() {
       fetchsaved()
       }
     }, [currentUser.username])
-    const [liked,setliked] =useState({likedcount:0})
-    async function fetchliked(username){
+
+    async function fetchliked(){
+      let username=currentUser.username
       try{
-        let res=await fetch(`http://localhost:4000/user-api/user-liked/${currentUser.username}`)
+        let res=await fetch(`http://localhost:4000/user-api/user-liked/${username}`)
         let data=await res.json()
         if(res.ok){
           setliked(data.payload)

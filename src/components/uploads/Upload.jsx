@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
 import FileDisplay from '../filedisplay/FileDisplay';
+
 function Upload() {
   const { currentUser } = useContext(userLoginContext);
   const [uploads, setUploads] = useState([]);
   const [msg, setMsg] = useState('');
+
   // Function to fetch uploads
-  async function fetchUploads(username){
+  async function fetchUploads(){
     try {
       let res=await fetch(`http://localhost:4000/user-api/user-uploads/${currentUser.username}`);
       let data = await res.json();
       if (res.ok) {
-        setUploads(data.payload.uploads);
+        setUploads(data.payload);
         setMsg('');
       } else {
         setMsg(data.error);
@@ -24,7 +26,7 @@ function Upload() {
   // Fetch uploads when the component mounts
   useEffect(() => {
     if (currentUser && currentUser.username) {
-      fetchUploads(currentUser.username);
+      fetchUploads();
     }
   }, [currentUser.username]);
   return (

@@ -13,7 +13,7 @@ function Liked() {
       let res=await fetch(`http://localhost:4000/user-api/user-liked/${currentUser.username}`)
       let data=await res.json()
       if(res.ok){
-        setliked(data.payload.liked);
+        setliked(data.payload);
         setMsg("")
       }
       else{
