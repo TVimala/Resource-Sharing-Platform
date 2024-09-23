@@ -13,7 +13,7 @@ function Upload() {
       let res=await fetch(`http://localhost:4000/user-api/user-uploads/${currentUser.username}`);
       let data = await res.json();
       if (res.ok) {
-        setUploads(data.payload);
+        setUploads(data.payload.uploads);
         setMsg('');
       } else {
         setMsg(data.error);
