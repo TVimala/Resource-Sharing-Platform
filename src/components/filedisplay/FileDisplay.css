@@ -57,6 +57,7 @@
     display: inline-block;
   }
   /* General styles for buttons */
+/* Default button styles */
 button {
   background-color: transparent;
   border: none;
@@ -66,11 +67,18 @@ button {
   align-items: center;
   justify-content: center;
   padding: 8px;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease;
   margin-left: 8px;
 }
 
+/* Hover effect */
 button:hover {
   background-color: #f1f1f1;
   border-radius: 50%;
+}
+
+/* Success message styles */
+.success-message {
+  margin-top: 10px;
+  color: green;
 }

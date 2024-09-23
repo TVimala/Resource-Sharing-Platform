@@ -10,7 +10,7 @@ function Header() {
       </div>
       <ul className='nav justify-content-end'>
           <li className='nav-item'>
-            <Link to="login" className='nav-link text-white'><h5>Login</h5></Link>
+            <Link to="login" className='nav-link text-white login fs-4'>Login</Link>
           </li>
       </ul>
     </div>

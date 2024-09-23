@@ -1,0 +1,38 @@
+.container-skill {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 0 auto;
+    color: white;
+  }
+  
+  span {
+    font-size: 1.2rem;
+  }
+  
+  .progress {
+    background-color: #2c2c2c;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    background-color: #ff5722; /* Example color, you can change this */
+    transition: width 0.5s ease;
+  }
+  
+  .progress-bar.bg-gradient {
+    background: linear-gradient(to right, #ff8a65, #ff5722); /* Gradient effect */
+  }
+  
+  
+  .text-center {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+  }
+  
+  h4 {
+    color: #fff;
+  }
+  
