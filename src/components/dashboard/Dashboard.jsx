@@ -12,7 +12,6 @@ import { userLoginContext } from '../../contexts/userLoginContext';
 import { Outlet } from 'react-router-dom';
 function Dashboard() {
   let { logoutUser, currentUser } = useContext(userLoginContext);
-
   return (
     <div className='dashboard-container'>
       <aside className='dashboard-sidebar'>

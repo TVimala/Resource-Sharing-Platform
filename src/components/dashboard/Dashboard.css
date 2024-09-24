@@ -14,9 +14,8 @@
   bottom: 0;
   z-index: 1000;
   height: 100vh;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
-
 .dashboard-sidebar h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 1.8rem;
@@ -65,8 +64,6 @@
 .dashboard-links .nav-item:hover .fs-2 {
   color: #007bff; 
 }
-
-/* Hover effect with an underline */
 .dashboard-links .nav-link::after {
   content: '';
   display: block;
@@ -77,42 +74,19 @@
 }
 
 .dashboard-links .nav-link:hover::after {
-  width: 100%; /* Expands underline on hover */
+  width: 100%; 
 }
-
-/* Sidebar Shadow on Hover */
 .dashboard-sidebar:hover {
   box-shadow: 3px 0 8px rgba(0, 0, 0, 0.15);
 }
-
-/* Logout Button Styles */
-button.nav-link {
-  border: none;
-  background: none;
-  padding: 0;
-  margin-left: 10px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  transition: color 0.3s ease;
-  cursor: pointer;
-  color: #333;
-}
-
-button.nav-link:hover {
-  color: #dc3545; /* Red color for logout on hover */
-}
-
-/* Main Content (Right Section) */
 .outlet-container {
   flex-grow: 1;
   padding: 20px;
-  margin-left: 250px; /* Aligns beside the sidebar */
+  margin-left: 250px; 
   transition: margin-left 0.3s ease;
   background-color: #f5f5f5;
-  overflow-y: auto; /* Allows scrolling of the content area */
+  overflow-y: auto; 
 }
-
-/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
   .dashboard-sidebar {
     width: 200px;
