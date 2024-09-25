@@ -37,7 +37,7 @@ function Streak() {
     if(currentUser && currentUser.username){
     fetchUserStreak()
     }
-  }, [currentUser.username])
+  }, [currentUser])
   return (
     <div className="container-streak rounded">
       <h2 className="text-white text-center">Streak</h2>
