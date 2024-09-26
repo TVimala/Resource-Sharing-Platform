@@ -31,7 +31,7 @@ function Saved() {
       if(currentUser && currentUser.username){
       fetchsaved()
       }
-    }, [currentUser.username])
+    }, [currentUser])
 
   return (
     <>
