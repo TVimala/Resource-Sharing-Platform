@@ -28,7 +28,7 @@ function Upload() {
     if (currentUser && currentUser.username) {
       fetchUploads();
     }
-  }, [currentUser.username]);
+  }, [currentUser]);
   return (
     <>
       {/* Profile component to display upload count */}

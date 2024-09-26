@@ -33,7 +33,7 @@ const Uploadgraph = ({ username }) => {
   }, [username]);
 
   return (
-    <ResponsiveContainer width="70%" height={200}>
+    <ResponsiveContainer width="70%" height={200} className='m-3'>
       <LineChart data={uploadData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
@@ -42,12 +42,12 @@ const Uploadgraph = ({ username }) => {
         <Line dataKey="uploads" fill="#8884d8" />
       </LineChart>
 
-       <LineChart width={500} height={300} data={uploadData}>
+       {/* <LineChart width={500} height={300} data={uploadData}>
     <XAxis dataKey="date"/>
     <YAxis/>
     <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
     <Line type="monotone" dataKey="uploads" stroke="#8884d8" />
-  </LineChart>
+  </LineChart> */}
     </ResponsiveContainer>
   );
 };
