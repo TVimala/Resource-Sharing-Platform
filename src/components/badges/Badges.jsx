@@ -1,20 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
 import './Badges.css'
-
 function Badges() {
   const { currentUser } = useContext(userLoginContext);
   const [uploads, setUploads] = useState({ uploadCount: 0 });
   const [msg, setMsg] = useState('');
-
-  // Array of badge images corresponding to upload count thresholds
   const badgeImages = [
-    { count: 3, image: 'alien1.png' },  // First badge at 5 uploads
-    { count: 5, image: 'alien2.png' }, // Second badge at 10 uploads
-    { count: 9, image: 'alien3.png' }  // Third badge at 15 uploads
-    // Add more badges as needed
+    { count: 3, image: 'alien1.png' },  
+    { count: 5, image: 'alien2.png' }, 
+    { count: 9, image: 'alien3.png' }  
   ];
-
   async function fetchUploads(username) {
     try {
       let res = await fetch(`http://localhost:4000/user-api/user-uploads/${currentUser.username}`);
@@ -47,16 +42,16 @@ function Badges() {
 
   return (
     <div className="badges-container">
-      <div className="card">
+      <div className="card w-100">
         <div className="card-header text-center">
           <h1>Badges</h1>
         </div>
         <div className="card-body">
-          {msg && <p>{msg}</p>}  {/* Display any messages */}
+          {msg && <p>{msg}</p>}
           {!msg && (
             <>
               <p>Here are your earned badges:</p>
-              <div className="badge-list">
+              <div className="badge-list d-flex">
                 {displayedBadges.map((badge, index) => (
                   <div className="badge" key={index}>
                     <img src={badge.image} alt={`badge-${index}`} className="badge-icon" />

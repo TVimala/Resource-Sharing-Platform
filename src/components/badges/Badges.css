@@ -3,10 +3,10 @@
     width:100px;
     height: 100px;
 }
-.card {
+/* .card {
     width: auto;
-    max-width: 100%; /* Ensures it doesn't overflow the container */
-    padding: 20px; /* Add some padding for a better look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Card shadow for a card-like appearance */
+    max-width: 100%; 
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
-  
+   */
