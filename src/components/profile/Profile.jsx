@@ -3,6 +3,7 @@ import { userLoginContext } from '../../contexts/userLoginContext';
 import Uploadgraph from '../uploadgraph/Uploadgraph';
 import Skillbar from '../skillbar/Skillbar';
 import Streak from '../streak/Streak';
+import Badges from '../badges/Badges';
 import './Profile.css'
 function Profile() {
   const { currentUser } = useContext(userLoginContext);
@@ -84,26 +85,30 @@ function Profile() {
         }
       }, [currentUser.username])
   return (
-    <div className="container d-flex flex-column justify-content-evenly">
-    {/* Uploads Circle */}
-    <div className="circle text-center p-2">
+    <div className="container justify-content-evenly">
+     <div className="d-flex">
+        <div className='d-flex flex-column mx-5'>
+        <div className="circle text-center p-2">
       <h5>Uploads</h5>
       <span className="upload-count">{uploads.uploadCount}</span>
     </div>
-  
     {/* Likes Circle */}
     <div className="circle text-center p-2">
       <h5>Likes</h5>
       <span className="upload-count">{liked.likedcount}</span>
     </div>
-  
     {/* Saved Files Circle */}
     <div className="circle text-center p-2">
       <h5>Saved</h5>
       <span className="upload-count">{saved.savedcount}</span>
     </div>
-      <Uploadgraph></Uploadgraph>
+    </div>
+     <div>
       <Streak></Streak>
+     </div>
+      </div>    
+      <Uploadgraph></Uploadgraph>
+      <Badges></Badges>
     </div>
   );
 }
