@@ -1,59 +1,42 @@
-import React from 'react';
+// FileDisplay.js
+import React, { useState, useContext } from 'react';
 import './FileDisplay.css';
-import { FaFileAlt } from 'react-icons/fa';
-import { RiBookmarkLine } from "react-icons/ri";
-import {userLoginContext} from '../../contexts/userLoginContext'
-import { useState } from 'react';
-import { useContext } from 'react';
-import { FaRegHeart } from "react-icons/fa";
+import { FaFileAlt, FaRegHeart } from 'react-icons/fa';
+import { RiBookmarkLine, RiBookmarkFill } from 'react-icons/ri';
+import { userLoginContext } from '../../contexts/userLoginContext';
+import { FcLike } from "react-icons/fc";
 
 function FileDisplay({ driveLink, fileName, tags, uploaderName }) {
-  const [message, setMessage] = useState(""); 
-  let {currentUser}=useContext(userLoginContext)
+  const [message, setMessage] = useState('');
+  const { currentUser, savedFiles, addToSaved, removeFromSaved, likedFiles, addToLiked, removeFromLiked } = useContext(userLoginContext);
 
+  // Check if the file is saved based on the global savedFiles array
+  const isSaved = savedFiles.some((file) => file.driveLink === driveLink && file.fileName === fileName);
+  const isLiked = likedFiles.some((file) => file.driveLink === driveLink && file.fileName === fileName);
 
-  async function addToSaved(){
-    let username=currentUser.username
-    const productObj = { driveLink, fileName, tags, uploaderName };
-    try{
-    let res=await fetch(`http://localhost:4000/user-api/add-to-saved/${username}`,{
-        method:"PUT",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(productObj)
-    })
-    let result=await res.json();
-    console.log(result);
-    if (result.payload.modifiedCount === 1) {
-      setMessage("File added to saved items!"); // Set success message
+  // Add to saved handler
+  const handleSaveToggle = () => {
+    const fileObj = { driveLink, fileName, tags, uploaderName };
+    if (isSaved) {
+      removeFromSaved(fileObj);
+      setMessage('File removed from saved items!');
     } else {
-      setMessage("Failed to add file to saved items.");
+      addToSaved(fileObj);
+      setMessage('File added to saved items!');
     }
-  } catch (error) {
-    console.error("Error adding to saved", error);
-    setMessage("An error occurred while adding the file.");
-  }
-}
-async function addToLiked(){
-  let username=currentUser.username
-  const productObj = { driveLink, fileName, tags, uploaderName };
-  try{
-  let res=await fetch(`http://localhost:4000/user-api/add-to-liked/${username}`,{
-      method:"PUT",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(productObj)
-  })
-  let result=await res.json();
-  console.log(result);
-  if (result.payload.modifiedCount === 1) {
-    setMessage("File added to liked items!"); // Set success message
-  } else {
-    setMessage("Failed to add file to liked items.");
-  }
-} catch (error) {
-  console.error("Error adding to liked", error);
-  setMessage("An error occurred while adding the file.");
-}
-}
+  };
+
+   // Add to liked handler
+   const handleLikeToggle = () => {
+    const fileObj = { driveLink, fileName, tags, uploaderName };
+    if (isLiked) {
+      removeFromLiked(fileObj);
+      setMessage('File removed from liked items!');
+    } else {
+      addToLiked(fileObj);
+      setMessage('File added to liked items!');
+    }
+  };
 
   return (
     <div className="file-card">
@@ -74,15 +57,11 @@ async function addToLiked(){
             </div>
           )}
         </div>
-        <button 
-          type="button"
-          onClick={()=>addToSaved()}>
-        <RiBookmarkLine/>
+        <button type="button" onClick={handleSaveToggle}>
+          {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
         </button>
-        <button 
-          type="button"
-          onClick={()=>addToLiked()}>
-        <FaRegHeart/>
+        <button type="button" onClick={handleLikeToggle}>
+          {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
       </div>
       {message && <div className="success-message">{message}</div>}
@@ -91,4 +70,3 @@ async function addToLiked(){
 }
 
 export default FileDisplay;
-

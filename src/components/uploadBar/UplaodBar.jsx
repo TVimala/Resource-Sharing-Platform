@@ -10,6 +10,7 @@ const UploadBar = ({ courseName,username, userId }) => {
   const [uniqueTags, setUniqueTags] = useState(new Set());
   const [uploadStatus, setUploadStatus] = useState("");
 
+
  async function handleSubmit(e){
     e.preventDefault();
 
@@ -45,6 +46,7 @@ const UploadBar = ({ courseName,username, userId }) => {
     setFileName("");
     setTags("");
     setUniqueTags(new Set());
+
 
   } catch (err) {
     console.error("Error uploading file:", err);

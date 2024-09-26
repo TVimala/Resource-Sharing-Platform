@@ -1,0 +1,46 @@
+.upload-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #4CAF50;
+    margin-right: 15px;
+  }
+  
+  .user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .upload-stats {
+    margin-top: 15px;
+  }
+  
+  .upload-count {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .upload-count .count {
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 1.5rem;
+  }
+  
