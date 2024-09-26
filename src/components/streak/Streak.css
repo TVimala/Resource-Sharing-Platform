@@ -1,0 +1,12 @@
+.container-streak {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .streak-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff9800; /* Fire-like color */
+  }
+  

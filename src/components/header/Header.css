@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #6482AD;
+    background-color: #825B32;
   }
   .logo {
       font-family: "Merienda", cursive;
@@ -21,10 +21,12 @@
   .nav-item {
     margin-left: 20px;
   }
-  .nav-link {
-    color: white;
-    text-decoration: none;
-  }
+ .login{
+  font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:500;
+    font-style: normal;
+ }
   /* .nav-link:hover {
     text-decoration: underline;
   } */
