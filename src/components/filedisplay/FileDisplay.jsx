@@ -64,8 +64,7 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
   };
 
   return (
-    <div className="file-container">
-      <div className="file-card col-lg-3 col-md-4 col-sm-6">
+    <div className="file-card">
       <div className="file-card-content">
         <FaFileAlt className="file-icon" />
         <div className="file-details">
@@ -86,7 +85,6 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
         <button type="button" onClick={handleSaveToggle}>
           {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
         </button>
-
         <button type="button" onClick={handleLikeToggle}>
           {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
@@ -99,7 +97,6 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
         )}
       </div>
       {message && <div className="success-message">{message}</div>}
-    </div>
     </div>
   );
 }
