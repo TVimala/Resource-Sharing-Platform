@@ -38,7 +38,8 @@ function Liked() {
     <h1>Your liked</h1>
     {msg && <p className="error-message">{msg}</p>}
     {liked && liked.length > 0 ? (
-        liked.map((file, index) => (
+        <div className="file-card-container">
+       {liked.map((file, index) => (
           <FileDisplay
             key={index}
             driveLink={file.driveLink}    // Pass file URL
@@ -46,7 +47,8 @@ function Liked() {
             tags={file.tags}              // Pass file tags
             uploaderName={file.uploaderName} // Pass uploader's name
           />
-        ))
+        ))}
+        </div>
       ) : (
         <p>No liked found.</p>
       )}

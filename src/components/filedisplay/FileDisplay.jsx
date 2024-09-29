@@ -1,27 +1,58 @@
+// FileDisplay.js
 import React, { useState, useContext } from 'react';
 import './FileDisplay.css';
-import { FaFileAlt } from 'react-icons/fa';
-import { RiBookmarkLine } from "react-icons/ri";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { MdDelete } from "react-icons/md"; 
+import { FaFileAlt, FaRegHeart } from 'react-icons/fa';
+import { RiBookmarkLine, RiBookmarkFill } from 'react-icons/ri';
 import { userLoginContext } from '../../contexts/userLoginContext';
-function FileDisplay({ driveLink, fileName, tags, uploaderName, isUpload }) { 
-  const [message, setMessage] = useState("");
-  const [isLiked, setIsLiked] = useState(false); 
-  const [isSaved, setIsSaved] = useState(false); 
-  let { currentUser } = useContext(userLoginContext);
-  async function deleteFile() {
+import { FcLike } from "react-icons/fc";
+import { MdDelete } from "react-icons/md"; 
+
+function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
+
+  const [message, setMessage] = useState('');
+  const { currentUser, savedFiles, addToSaved, removeFromSaved, likedFiles, addToLiked, removeFromLiked } = useContext(userLoginContext);
+
+  // Check if the file is saved based on the global savedFiles array
+  const isSaved = savedFiles.some((file) => file.driveLink === driveLink && file.fileName === fileName);
+  const isLiked = likedFiles.some((file) => file.driveLink === driveLink && file.fileName === fileName);
+
+  // Add to saved handler
+  const handleSaveToggle = () => {
+    const fileObj = { driveLink, fileName, tags, uploaderName };
+    if (isSaved) {
+      removeFromSaved(fileObj);
+      setMessage('File removed from saved items!');
+    } else {
+      addToSaved(fileObj);
+      setMessage('File added to saved items!');
+    }
+  };
+
+   // Add to liked handler
+   const handleLikeToggle = () => {
+    const fileObj = { driveLink, fileName, tags, uploaderName };
+    if (isLiked) {
+      removeFromLiked(fileObj);
+      setMessage('File removed from liked items!');
+    } else {
+      addToLiked(fileObj);
+      setMessage('File added to liked items!');
+    }
+  };
+
+  //Delete Upload function
+ async function deleteFile() {
     let username = currentUser.username;
-    const productObj = { driveLink, fileName };
+    const fileObj = { driveLink, fileName };
     try {
       let res = await fetch(`http://localhost:4000/user-api/delete-uploads/${username}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(productObj)
+        body: JSON.stringify(fileObj)
       });
       
-      let result = await res.json();
-      if (result.success) {
+      let data = await res.json();
+      if (res.ok) {
         setMessage("File deleted successfully!");
       } else {
         setMessage("Failed to delete the file.");
@@ -30,56 +61,7 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName, isUpload }) {
       console.error("Error deleting file", error);
       setMessage("An error occurred while deleting the file.");
     }
-  }
-
-  async function toggleLike() {
-    let username = currentUser.username;
-    const productObj = { driveLink, fileName, tags, uploaderName };
-    try {
-      let endpoint = isLiked 
-        ? `http://localhost:4000/user-api/remove-from-liked/${username}`
-        : `http://localhost:4000/user-api/add-to-liked/${username}`;
-        
-      let res = await fetch(endpoint, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(productObj)
-      });
-      
-      let result = await res.json();
-      if (result.payload.modifiedCount === 1) {
-        setMessage(isLiked ? "File removed from liked items!" : "File added to liked items!");
-        setIsLiked(!isLiked); 
-      } else {
-        setMessage("Failed to update liked items.");
-      }
-    } catch (error) {
-      console.error("Error updating liked status", error);
-      setMessage("An error occurred while updating the file.");
-    }
-  }
-
-  async function addToSaved() {
-    let username = currentUser.username;
-    const productObj = { driveLink, fileName, tags, uploaderName };
-    try {
-      let res = await fetch(`http://localhost:4000/user-api/add-to-saved/${username}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(productObj)
-      });
-      let result = await res.json();
-      if (result.payload.modifiedCount === 1) {
-        setMessage("File added to saved items!");
-        setIsSaved(true); 
-      } else {
-        setMessage("Failed to add file to saved items.");
-      }
-    } catch (error) {
-      console.error("Error adding to saved", error);
-      setMessage("An error occurred while adding the file.");
-    }
-  }
+  };
 
   return (
     <div className="file-container">
@@ -101,15 +83,12 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName, isUpload }) {
             </div>
           )}
         </div>
-        <button 
-          type="button"
-          onClick={addToSaved}>
-          <RiBookmarkLine style={{ color: isSaved ? 'black' : 'inherit' }} />
+        <button type="button" onClick={handleSaveToggle}>
+          {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
         </button>
-        <button 
-          type="button"
-          onClick={toggleLike}>
-          {isLiked ? <FaHeart style={{ color: '#f93a8d' }} /> : <FaRegHeart />}
+
+        <button type="button" onClick={handleLikeToggle}>
+          {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
         {isUpload && uploaderName === currentUser.username && (
           <button 
