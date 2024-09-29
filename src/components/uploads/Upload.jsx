@@ -22,7 +22,7 @@ function Upload() {
   }
   useEffect(() => {
     if (currentUser && currentUser.username) {
-      fetchUploads(currentUser.username);
+      fetchUploads();
     }
   }, [currentUser.username]);
   return (
