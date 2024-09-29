@@ -45,6 +45,7 @@ function Upload() {
             fileName={file.fileName}
             tags={file.tags}
             uploaderName={file.uploaderName}
+            isUpload={true}
           />
         ))}
         </div>

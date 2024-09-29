@@ -89,7 +89,7 @@ const UploadBar = ({ courseName, username, userId, onUploadSuccess }) => {
         <ol>
           <li>Enter a name for your file.</li>
           <li>Paste the link to the file in the "Drive link" field.</li>
-          <li>Add tags to help categorize your file. Press "Enter" to add each tag.</li>
+          <li>Ensure the file is set to "Public" or "Anyone with the link can view" to allow access.</li>           <li>Add tags to help categorize your file. Press "Enter" to add each tag.</li>
           <li>Click the "Upload" button to submit your file.</li>
         </ol>
       </div>

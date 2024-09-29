@@ -5,8 +5,10 @@ import { FaFileAlt, FaRegHeart } from 'react-icons/fa';
 import { RiBookmarkLine, RiBookmarkFill } from 'react-icons/ri';
 import { userLoginContext } from '../../contexts/userLoginContext';
 import { FcLike } from "react-icons/fc";
+import { MdDelete } from "react-icons/md"; 
 
-function FileDisplay({ driveLink, fileName, tags, uploaderName }) {
+function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
+
   const [message, setMessage] = useState('');
   const { currentUser, savedFiles, addToSaved, removeFromSaved, likedFiles, addToLiked, removeFromLiked } = useContext(userLoginContext);
 
@@ -38,6 +40,29 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName }) {
     }
   };
 
+  //Delete Upload function
+ async function deleteFile() {
+    let username = currentUser.username;
+    const fileObj = { driveLink, fileName };
+    try {
+      let res = await fetch(`http://localhost:4000/user-api/delete-uploads/${username}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fileObj)
+      });
+      
+      let data = await res.json();
+      if (res.ok) {
+        setMessage("File deleted successfully!");
+      } else {
+        setMessage("Failed to delete the file.");
+      }
+    } catch (error) {
+      console.error("Error deleting file", error);
+      setMessage("An error occurred while deleting the file.");
+    }
+  };
+
   return (
     <div className="file-card">
       <div className="file-card-content">
@@ -63,6 +88,13 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName }) {
         <button type="button" onClick={handleLikeToggle}>
           {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
+        {isUpload && uploaderName === currentUser.username && (
+          <button 
+            type="button" 
+            onClick={deleteFile}>
+            <MdDelete style={{ color: 'red' }} />
+          </button>
+        )}
       </div>
       {message && <div className="success-message">{message}</div>}
     </div>
