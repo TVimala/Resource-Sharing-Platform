@@ -12,19 +12,17 @@ function Badges() {
   ];
   async function fetchUploads(username) {
     try {
-      let res = await fetch(`http://localhost:4000/user-api/user-uploads/${currentUser.username}`);
+      let res = await fetch(`http://localhost:4000/user-api/user-uploads/${username}`);
       let data = await res.json();
       if (res.ok) {
-        if (data.payload && data.payload.uploadCount !== undefined) {
-          setUploads({ uploadCount: data.payload.uploadCount });
+          setUploads({ uploadCount: data.payload.uploads.length });
           setMsg('');
-        } else {
-          setMsg('Upload count not found in response');
-        }
-      } else {
+      }
+       else {
         setMsg(data.error);
       }
-    } catch (err) {
+    }
+     catch (err) {
       console.log(err);
       setMsg('An error occurred while fetching uploads');
     }
@@ -35,14 +33,14 @@ function Badges() {
     if (currentUser && currentUser.username) {
       fetchUploads(currentUser.username);
     }
-  }, [currentUser.username]);
+  }, [currentUser]);
 
   // Filter badges based on the upload count
   const displayedBadges = badgeImages.filter(badge => uploads.uploadCount >= badge.count);
 
   return (
-    <div className="badges-container">
-      <div className="card w-100">
+    <div className="badges-container w-100 h-100">
+      <div className="card w-75">
         <div className="card-header text-center">
           <h1>Badges</h1>
         </div>

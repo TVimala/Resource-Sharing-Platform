@@ -42,7 +42,8 @@ function SearchBar({ files = [] }) {
       </Form>
       <div className="file-display-container mt-3">
         {filteredFiles.length > 0 ? (
-          filteredFiles.map((file, index) => (
+    <div className="file-card-container">
+       {filteredFiles.map((file, index) => (
             <FileDisplay
               key={index}
               driveLink={file.url}
@@ -50,7 +51,8 @@ function SearchBar({ files = [] }) {
               tags={file.tags}
               uploaderName={file.uploaderName}
             />
-          ))
+          ))}
+          </div>
         ) : (
           <p>No files match your search.</p>
         )}

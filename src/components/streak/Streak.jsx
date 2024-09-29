@@ -6,23 +6,38 @@ function Streak() {
       const [currentStreak, setCurrentStreak] = useState(0);
   const [longestStreak, setLongestStreak] = useState(0);
   const [errorMsg, setErrorMsg] = useState('');
-  const fetchUserStreak = async (username) => {
-    try {
-      const res = await fetch(`http://localhost:4000/user-api/user-streak/${currentUser.username}`);
-      console.log(res.data);
-      setCurrentStreak(res.data.currentStreak);
-      setLongestStreak(res.data.longestStreak);
-      setErrorMsg('');
-    } catch (err) {
-      console.log('Error fetching streak:', err);
-      setErrorMsg('An error occurred while fetching streak');
+
+ const fetchUserStreak = async () => {
+  try {
+    let username = currentUser.username;
+    const res = await fetch(`http://localhost:4000/user-api/user-streak/${username}`);
+    
+    if (!res.ok) {
+      throw new Error(`Server error: ${res.statusText}`);
     }
-  };
+    
+    const data = await res.json(); // Parse the response as JSON
+    console.log(data); // Log to inspect the response
+
+    if (data && data.currentStreak !== undefined && data.longestStreak !== undefined) {
+      setCurrentStreak(data.currentStreak);
+      setLongestStreak(data.longestStreak);
+      setErrorMsg('');
+    } else {
+      setErrorMsg('Invalid response structure');
+    }
+    
+  } catch (err) {
+    console.error('Error fetching streak:', err);
+    setErrorMsg('An error occurred while fetching streak');
+  }
+};
+
   useEffect(() => {
     if(currentUser && currentUser.username){
     fetchUserStreak()
     }
-  }, [currentUser.username])
+  }, [currentUser])
   return (
     <div className="container-streak rounded">
       <h2 className="text-white text-center">Streak</h2>

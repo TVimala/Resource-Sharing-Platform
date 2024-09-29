@@ -31,14 +31,15 @@ function Saved() {
       if(currentUser && currentUser.username){
       fetchsaved()
       }
-    }, [currentUser.username])
+    }, [currentUser])
 
   return (
     <>
     <h1>Your saved</h1>
     {msg && <p className="error-message">{msg}</p>}
     {saved && saved.length > 0 ? (
-        saved.map((file, index) => (
+    <div className="file-card-container">
+       {saved.map((file, index) => (
           <FileDisplay
             key={index}
             driveLink={file.driveLink}    // Pass file URL
@@ -46,7 +47,8 @@ function Saved() {
             tags={file.tags}              // Pass file tags
             uploaderName={file.uploaderName} // Pass uploader's name
           />
-        ))
+        ))}
+        </div>
       ) : (
         <p>No saved found.</p>
       )}
