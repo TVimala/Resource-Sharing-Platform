@@ -37,15 +37,18 @@ function Upload() {
 
       {/* Display uploads */}
       {uploads && uploads.length > 0 ? (
-        uploads.map((file, index) => (
+    <div className="file-card-container">
+       { uploads.map((file, index) => (
           <FileDisplay
             key={index}
             driveLink={file.driveLink}
             fileName={file.fileName}
             tags={file.tags}
             uploaderName={file.uploaderName}
+            isUpload={true}
           />
-        ))
+        ))}
+        </div>
       ) : (
         <p>No uploads found.</p>
       )}

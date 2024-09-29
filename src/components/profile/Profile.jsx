@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
 import Uploadgraph from '../uploadGraph/Uploadgraph';
 import Streak from '../streak/Streak';
-import './Profile.css';
-
+import Badges from '../badges/Badges';
+import './Profile.css'
 function Profile() {
     const { currentUser } = useContext(userLoginContext);
     const [uploads, setUploads] = useState({ uploadCount: 0 });
@@ -65,29 +65,35 @@ function Profile() {
             fetchsaved(currentUser.username);
             fetchliked(currentUser.username);
         }
-    }, [currentUser]);
 
-    return (
-        <div className="container d-flex flex-column justify-content-evenly">
-            {/* Uploads Circle */}
-            <div className="circle text-center p-2">
-                <h5>Uploads</h5>
-                <span className="upload-count">{uploads.uploadCount}</span>
-            </div>
-            {/* Likes Circle */}
-            <div className="circle text-center p-2">
-                <h5>Likes</h5>
-                <span className="upload-count">{liked.likedCount}</span>
-            </div>
-            {/* Saved Files Circle */}
-            <div className="circle text-center p-2">
-                <h5>Saved</h5>
-                <span className="upload-count">{saved.savedCount}</span>
-            </div>
-            <Uploadgraph />
-            <Streak />
-        </div>
-    );
+      }, [currentUser.username])
+  return (
+    <div className="container justify-content-evenly">
+     <div className="d-flex">
+        <div className='d-flex flex-column mx-5'>
+        <div className="circle text-center p-2">
+      <h5>Uploads</h5>
+      <span className="upload-count">{uploads.uploadCount}</span>
+    </div>
+    {/* Likes Circle */}
+    <div className="circle text-center p-2">
+      <h5>Likes</h5>
+      <span className="upload-count">{liked.likedCount}</span>
+    </div>
+    {/* Saved Files Circle */}
+    <div className="circle text-center p-2">
+      <h5>Saved</h5>
+      <span className="upload-count">{saved.savedCount}</span>
+    </div>
+    </div>
+     <div>
+      <Streak></Streak>
+     </div>
+      </div>    
+      <Uploadgraph></Uploadgraph>
+      <Badges></Badges>
+    </div>
+  );
 }
 
 export default Profile;
