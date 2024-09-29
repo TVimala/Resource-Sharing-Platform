@@ -41,8 +41,8 @@ function Badges() {
   const displayedBadges = badgeImages.filter(badge => uploads.uploadCount >= badge.count);
 
   return (
-    <div className="badges-container">
-      <div className="card w-100">
+    <div className="badges-container w-100 h-100">
+      <div className="card w-75">
         <div className="card-header text-center">
           <h1>Badges</h1>
         </div>

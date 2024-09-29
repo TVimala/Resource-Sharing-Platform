@@ -3,10 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+.file-container {
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  gap: 16px; 
+}
 .file-card {
     display: flex;
-    flex-direction: column;
-    width: 95%;
     padding: 16px;
     border: 1px solid #ddd;
     border-radius: 8px;
