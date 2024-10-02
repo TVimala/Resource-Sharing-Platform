@@ -6,13 +6,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #1A237E; /* Dark Blue Header */
+    background-color: #0D47A1; /* Dark Blue Header */
 }
 
 .logo {
     font-family: "Great Vibes", cursive; /* Aesthetic font for the logo */
     font-size: 120px; /* Increase font size */
-    color: white;
+    color: #E3F2FD; /* Light blue for contrast */
     margin: 0;
 }
 
@@ -29,7 +29,7 @@
 
 .nav-link {
     font-family: "Poppins", sans-serif; /* Modern sans-serif font for links */
-    color: white;
+    color: #E3F2FD; /* Light blue for links */
     text-decoration: none;
     font-weight: 500;
     font-size: 1.2rem;
@@ -39,6 +39,4 @@
 /* 
 .nav-link:hover {
     text-decoration: underline;
-} 
-*/
-
+    color: #64B5F6; /* Light blue on hover */

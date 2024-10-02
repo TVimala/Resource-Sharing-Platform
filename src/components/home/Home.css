@@ -4,76 +4,87 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F4F6F7; /* Light gray background */
+    background-color: #E3F2FD; /* Light blue background */
 }
 
+/* Apply background to the entire container */
 .home-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #E1F5FE; /* Light sky-blue background */
+    position: relative;
+    background-image: url('../background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Overlay to create a blurred effect */
+.home-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(21, 101, 192, 0.6); /* Transparent medium blue */
+    z-index: -1;
 }
 
 .start {
     padding: 15px;
     width: 220px;
     height: 90px;
-    background-color: #1565C0; /* Deep blue for button */
-    color: white;
-    font-family: 'Raleway', sans-serif; /* Raleway for bold titles */
-    font-size: 1.8rem; /* Larger button font */
+    background-color: #1976D2; /* Medium blue button */
+    color: #E3F2FD; /* Light blue text */
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.8rem;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Light shadow */
-    margin-bottom: 30px; /* Space below button */
+    box-shadow: 0 6px 12px rgba(25, 118, 210, 0.3); /* Soft blue shadow */
+    margin-bottom: 30px;
 }
 
 .home-container .start:hover {
-    background-color: #9195c0; /* Brighter blue on hover */
-    box-shadow: 0 10px 20px rgba(15, 15, 15, 0.3); /* Deeper shadow on hover */
+    background-color: #64B5F6; /* Lighter blue on hover */
+    box-shadow: 0 10px 20px rgba(25, 118, 210, 0.4);
 }
 
 .resource {
     font-weight: 700;
-    font-size: 6rem; /* Large heading for emphasis */
-    font-family: 'Raleway', sans-serif; /* Raleway for heading */
-    color: #1A237E; /* Dark blue for contrast */
-    margin-bottom: 40px; /* Increased space below heading */
+    font-size: 6rem;
+    font-family: 'Raleway', sans-serif;
+    color: white; /* Dark blue for the main title */
+    margin-bottom: 40px;
+    z-index: 1;
 }
 
-.image {
+.about-section {
+    padding: 50px;
+    background-color: #1565C0; /* Medium blue background for about section */
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    color: #E3F2FD; /* Light blue text */
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 50px; /* Space between boxes */
+    justify-content: space-between;
+    z-index: 1;
 }
 
-.image .box {
-    width: 240px;
-    height: 240px;
-    background-color: #FFFFFF;
-    border-radius: 50%; /* Softer curves */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Soft shadow */
-    display: flex;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    align-items: center;
-    font-family: 'Poppins', sans-serif; /* Light, clean font */
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #2E3B4E; /* Dark blue-gray text */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.about-image {
+    width: 40%;
+    height: 300px;
+    object-fit: cover;
+    margin-left: 10px;
 }
 
-.image .box:hover {
-    transform: translateY(-10px); /* Lift effect on hover */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+.about-text {
+    width: 55%;
 }
 
 @media (max-width: 768px) {
@@ -87,6 +98,15 @@ body {
     .image .box {
         width: 100%;
         max-width: 300px;
+    }
+
+    .about-section {
+        flex-direction: column;
+    }
+    .about-image,
+    .about-text {
+        width: 100%;
+        margin-left: 0;
     }
 }
 
