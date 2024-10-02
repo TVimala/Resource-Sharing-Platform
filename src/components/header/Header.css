@@ -1,25 +1,43 @@
+/* Header.css */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500&display=swap');
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #825B32;
-  }
-  .logo {
-      font-family: "Merienda", cursive;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-      color:white;
+    background-color: #0D47A1; /* Dark Blue Header */
 }
-  .nav {
+
+.logo {
+    font-family: "Great Vibes", cursive; /* Aesthetic font for the logo */
+    font-size: 120px; /* Increase font size */
+    color: #E3F2FD; /* Light blue for contrast */
+    margin: 0;
+}
+
+.nav {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-  }
-  .nav-item {
+}
+
+.nav-item {
     margin-left: 20px;
+}
+
+.nav-link {
+    font-family: "Poppins", sans-serif; /* Modern sans-serif font for links */
+    color: #E3F2FD; /* Light blue for links */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+/* Optional: Uncomment for hover effect */
+/* 
+.nav-link:hover {
   }
  .login{
   font-family: "Exo 2", sans-serif;
@@ -29,5 +47,4 @@
  }
   /* .nav-link:hover {
     text-decoration: underline;
-  } */
-  
+    color: #64B5F6; /* Light blue on hover */

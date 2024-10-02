@@ -1,9 +1,8 @@
-
 .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 10px;
+  gap: 20px; /* Increased gap for better spacing */
 }
 
 .card {
@@ -12,9 +11,15 @@
   border-radius: 1.5rem; 
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgb(90, 90, 103);
+  box-shadow: 0 10px 20px rgba(90, 90, 103, 0.5); /* Soft shadow */
   background-color: #ccd0d3; 
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slight scale effect on hover */
+  box-shadow: 0 15px 25px rgba(90, 90, 103, 0.7); /* Stronger shadow on hover */
 }
 
 .card-link {
@@ -27,13 +32,12 @@
   height: 200px;
   background-size: cover;
   background-position: center;
-  /* opacity: 0.5; */
 }
 
 .card-text {
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,4 +46,35 @@
   color: black;
   font-size: 1.25rem; 
   font-weight: 650;
+}
+
+/* Zigzag effect for cards */
+.row .card:nth-child(odd) {
+  align-self: flex-start; /* Align odd cards at the top */
+}
+
+.row .card:nth-child(even) {
+  align-self: flex-end; /* Align even cards at the bottom */
+}
+
+/* Adjust specific margins for Development and Interview cards if needed */
+.development-adjust {
+  margin-left: 250px; /* Moves Development slightly to the right */
+}
+
+.interview-adjust {
+  margin-right: 250px; /* Moves Interview/Placement slightly to the left */
+}
+
+@media (max-width: 768px) {
+  /* On smaller screens, reset the zigzag alignment */
+  .row .card {
+    align-self: center;
+  }
+
+  .development-adjust,
+  .interview-adjust {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
