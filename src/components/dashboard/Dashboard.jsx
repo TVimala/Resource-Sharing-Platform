@@ -6,41 +6,52 @@ import { FiUpload } from "react-icons/fi";
 import { FaRegBookmark } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
-
-
+import { ImBooks } from "react-icons/im";
+import { useContext } from 'react';
+import { userLoginContext } from '../../contexts/userLoginContext';
+import { Outlet } from 'react-router-dom';
 function Dashboard() {
+  let { logoutUser, currentUser } = useContext(userLoginContext);
   return (
-    <div className='dashboard'>
-      <h1>Username</h1>
-      <div className='nav'>
-        <ul className='links'>
+    <div className='dashboard-container'>
+      <aside className='dashboard-sidebar'>
+        <div className="profile">
+        <h1>{currentUser.username}</h1>
+        <img className='image' src="profile.png" alt="profile image" />
+        </div>
+        <ul className='dashboard-links'>
           <li className='nav-item'>
             <MdHome className='fs-2'/>
-            <Link to="" className='nav-link text-dark fs-4'>Home</Link>
+            <Link to="/profile" className='nav-link text-dark fs-4'>Profile</Link>
           </li>
           <li className='nav-item'>
-          <FiUpload className='fs-2'/>
+            <ImBooks className='fs-2'/>
+            <Link to='/courses' className='nav-link text-dark fs-4'>Courses</Link>
+          </li>
+          <li className='nav-item'>
+            <FiUpload className='fs-2'/>
             <Link to="/uploads" className='nav-link text-dark fs-4'>Uploads</Link>
           </li>
           <li className='nav-item'>
-            <Link to='' className='nav-link text-dark fs-4'>Courses</Link>
-          </li>
-          <li className='nav-item'>
-          <FaRegBookmark className='fs-2'/>
+            <FaRegBookmark className='fs-2'/>
             <Link to="/saved" className='nav-link text-dark fs-4'>Saved</Link>
           </li>
           <li className='nav-item'>
-          <FaHeart  className='fs-2'/>
+            <FaHeart className='fs-2'/>
             <Link to="/liked" className='nav-link text-dark fs-4'>Liked</Link>
           </li>
           <li className='nav-item'>
-          <RiLogoutCircleLine  className='fs-2'/>
-            <Link to="/logout" className='nav-link text-dark fs-4'>Logout</Link>
+            <RiLogoutCircleLine className='fs-2'/>
+            <button className='nav-link text-dark fs-4' onClick={logoutUser}>Logout</button>
           </li>
         </ul>
-      </div>
+      </aside>
+
+      <main className='outlet-container'>
+        <Outlet/>
+      </main>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
