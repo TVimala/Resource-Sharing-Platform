@@ -19,9 +19,7 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName, isUpload }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(productObj)
       });
-      
-      let result = await res.json();
-      if (result.success) {
+      if (res.ok) {
         setMessage("File deleted successfully!");
       } else {
         setMessage("Failed to delete the file.");
