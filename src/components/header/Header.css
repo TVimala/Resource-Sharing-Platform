@@ -38,5 +38,13 @@
 /* Optional: Uncomment for hover effect */
 /* 
 .nav-link:hover {
+  }
+ .login{
+  font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:500;
+    font-style: normal;
+ }
+  /* .nav-link:hover {
     text-decoration: underline;
     color: #64B5F6; /* Light blue on hover */

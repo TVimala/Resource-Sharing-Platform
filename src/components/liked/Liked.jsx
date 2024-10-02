@@ -1,7 +1,58 @@
 import React from 'react'
+import { useState,useContext,useEffect } from 'react'
+import { userLoginContext } from '../../contexts/userLoginContext'
+import FileDisplay from '../filedisplay/FileDisplay'
+
 function Liked() {
+  const { currentUser } = useContext(userLoginContext)
+  const [liked,setliked] =useState([])
+  const [msg,setMsg] = useState("")
+
+  async function fetchliked(){
+    try{
+      let res=await fetch(`http://localhost:4000/user-api/user-liked/${currentUser.username}`)
+      let data=await res.json()
+      if(res.ok){
+        setliked(data.payload.liked);
+        setMsg("")
+      }
+      else{
+        setMsg(data.error)
+        }
+      }
+        catch(err){
+          console.log(err)
+          setMsg("An error occured while fetching liked")
+    }
+  }
+
+  
+    useEffect(() => {
+      if(currentUser && currentUser.username){
+      fetchliked()
+      }
+    }, [currentUser.username])
+
   return (
-    <div>Liked</div>
+    <>
+    <h1>Your liked</h1>
+    {msg && <p className="error-message">{msg}</p>}
+    {liked && liked.length > 0 ? (
+        <div className="file-card-container">
+       {liked.map((file, index) => (
+          <FileDisplay
+            key={index}
+            driveLink={file.driveLink}    // Pass file URL
+            fileName={file.fileName}      // Pass file name
+            tags={file.tags}              // Pass file tags
+            uploaderName={file.uploaderName} // Pass uploader's name
+          />
+        ))}
+        </div>
+      ) : (
+        <p>No liked found.</p>
+      )}
+    </>
   )
 }
 
