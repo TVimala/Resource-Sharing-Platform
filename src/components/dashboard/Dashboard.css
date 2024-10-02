@@ -24,6 +24,17 @@
   font-weight: bold;
 }
 
+.profile{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.profile .image{
+  width: 60px;
+  border-radius: 50%;
+
+}
 .dashboard-links {
   list-style: none;
   padding: 0;

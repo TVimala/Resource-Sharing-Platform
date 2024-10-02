@@ -78,12 +78,12 @@ function Profile() {
     {/* Likes Circle */}
     <div className="circle text-center p-2">
       <h5>Likes</h5>
-      <span className="upload-count">{liked.likedcount}</span>
+      <span className="upload-count">{liked.likedCount}</span>
     </div>
     {/* Saved Files Circle */}
     <div className="circle text-center p-2">
       <h5>Saved</h5>
-      <span className="upload-count">{saved.savedcount}</span>
+      <span className="upload-count">{saved.savedCount}</span>
     </div>
     </div>
      <div>

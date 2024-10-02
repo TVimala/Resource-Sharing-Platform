@@ -15,7 +15,10 @@ function Dashboard() {
   return (
     <div className='dashboard-container'>
       <aside className='dashboard-sidebar'>
+        <div className="profile">
         <h1>{currentUser.username}</h1>
+        <img className='image' src="profile.png" alt="profile image" />
+        </div>
         <ul className='dashboard-links'>
           <li className='nav-item'>
             <MdHome className='fs-2'/>

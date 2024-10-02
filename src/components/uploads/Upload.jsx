@@ -24,13 +24,14 @@ function Upload() {
     if (currentUser && currentUser.username) {
       fetchUploads();
     }
-  }, [currentUser.username]);
+  }, [currentUser]);
   return (
     <>
       <h1>Your Uploads</h1>
       {msg && <p className="error-message">{msg}</p>}
       {uploads && uploads.length > 0 ? (
-        uploads.map((file, index) => (
+    <div className="file-card-container">
+       { uploads.map((file, index) => (
           <FileDisplay
             key={index}
             driveLink={file.driveLink}
@@ -39,7 +40,8 @@ function Upload() {
             uploaderName={file.uploaderName}
             isUpload={true}
           />
-        ))
+        ))}
+        </div>
       ) : (
         <p>No uploads found.</p>
       )}
