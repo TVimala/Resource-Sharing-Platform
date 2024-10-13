@@ -27,7 +27,7 @@ function Upload() {
   }, [currentUser]);
   return (
     <>
-      <h1>Your Uploads</h1>
+      <h1 className='text-center'>Your Uploads</h1>
       {msg && <p className="error-message">{msg}</p>}
       {uploads && uploads.length > 0 ? (
     <div className="file-card-container">

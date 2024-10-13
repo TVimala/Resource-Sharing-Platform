@@ -1,33 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500&display=swap');
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #825B32;
-  }
-  .logo {
-      font-family: "Merienda", cursive;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-      color:white;
+    background-color: #0D47A1;
 }
-  .nav {
+.logo {
+    font-family: "Great Vibes", cursive; 
+    font-size: 120px;
+    color: #E3F2FD;
+    margin: 0;
+}
+.nav {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-  }
-  .nav-item {
+}
+.nav-item {
     margin-left: 20px;
-  }
- .login{
-  font-family: "Exo 2", sans-serif;
-    font-optical-sizing: auto;
-    font-weight:500;
-    font-style: normal;
- }
-  /* .nav-link:hover {
-    text-decoration: underline;
-  } */
-  
+}
+.nav-link {
+    font-family: "Poppins", sans-serif; 
+    color: #E3F2FD; 
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+

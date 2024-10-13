@@ -52,8 +52,8 @@ function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
         body: JSON.stringify(fileObj)
       });
       
-      let data = await res.json();
-      if (res.ok) {
+      let result = await res.json();
+      if (result.success) {
         setMessage("File deleted successfully!");
       } else {
         setMessage("Failed to delete the file.");
@@ -83,15 +83,15 @@ function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
             </div>
           )}
         </div>
-        <button type="button" className='icons' onClick={handleSaveToggle}>
+        <button type="button" onClick={handleSaveToggle} className='dbutton'>
           {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
         </button>
-        <button type="button" className='icons'  onClick={handleLikeToggle}>
+        <button type="button" onClick={handleLikeToggle} className='dbutton'>
           {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
         {isUpload && uploaderName === currentUser.username && (
-          <button 
-            type="button" className='icons' 
+          <button className='dbutton'
+            type="button" 
             onClick={deleteFile}>
             <MdDelete style={{ color: 'red' }} />
           </button>
