@@ -82,14 +82,14 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
             </div>
           )}
         </div>
-        <button type="button" onClick={handleSaveToggle}>
+        <button type="button" onClick={handleSaveToggle} className='dbutton'>
           {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
         </button>
-        <button type="button" onClick={handleLikeToggle}>
+        <button type="button" onClick={handleLikeToggle} className='dbutton'>
           {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
         {isUpload && uploaderName === currentUser.username && (
-          <button 
+          <button className='dbutton'
             type="button" 
             onClick={deleteFile}>
             <MdDelete style={{ color: 'red' }} />

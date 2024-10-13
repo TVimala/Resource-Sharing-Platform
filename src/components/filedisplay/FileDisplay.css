@@ -62,7 +62,7 @@
   }
   /* General styles for buttons */
 /* Default button styles */
-button {
+.dbutton {
   background-color: transparent;
   border: none;
   cursor: pointer;
