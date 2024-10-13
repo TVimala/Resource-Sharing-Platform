@@ -20,7 +20,7 @@ function Badges() {
       }
        else {
         setMsg(data.error);
-      }
+      }  
     }
      catch (err) {
       console.log(err);
