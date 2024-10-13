@@ -83,14 +83,14 @@ function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
             </div>
           )}
         </div>
-        <button type="button" onClick={handleSaveToggle} className='dbutton'>
+        <button type="button" onClick={handleSaveToggle} className='icons'>
           {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
         </button>
-        <button type="button" onClick={handleLikeToggle} className='dbutton'>
+        <button type="button" onClick={handleLikeToggle} className='icons'>
           {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
         {isUpload && uploaderName === currentUser.username && (
-          <button className='dbutton'
+          <button className='icons'
             type="button" 
             onClick={deleteFile}>
             <MdDelete style={{ color: 'red' }} />
