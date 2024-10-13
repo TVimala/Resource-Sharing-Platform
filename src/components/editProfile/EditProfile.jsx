@@ -11,7 +11,7 @@ function EditProfile() {
 
   async function onsave(modifiedUser){
     console.log(modifiedUser)
-    let res=await fetch('http://localhost:4000/user-api/update-user',{
+    let res=await fetch('https://file-api-huow.onrender.com/user-api/update-user',{
       method:'PUT',
       headers:{"Content-type":"application/json"},
       body:JSON.stringify(modifiedUser)

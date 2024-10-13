@@ -164,7 +164,7 @@ function UserLoginStore({ children }) {
     // Function to remove a file from liked
     const removeFromLiked = async (file) => {
       try {
-        const res = await fetch(`http://localhost:4000/user-api/remove-from-liked/${currentUser.username}`, {
+        const res = await fetch(`https://file-api-huow.onrender.com/user-api/remove-from-liked/${currentUser.username}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(file),

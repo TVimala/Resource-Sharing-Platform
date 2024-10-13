@@ -46,7 +46,7 @@ function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
     let username = currentUser.username;
     const fileObj = { url, fileName };
     try {
-      let res = await fetch(`http://localhost:4000/user-api/delete-uploads/${username}`, {
+      let res = await fetch(`https://file-api-huow.onrender.com/user-api/delete-uploads/${username}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fileObj)
