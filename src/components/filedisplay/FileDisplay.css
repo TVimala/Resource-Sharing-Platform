@@ -3,8 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-
 .file-card {
     display: flex;
     flex-direction: column;
@@ -64,6 +62,7 @@
     display: inline-block;
   }
   /* General styles for buttons */
+  
 /* Default button styles */
 button {
   background-color: transparent;
@@ -79,7 +78,7 @@ button {
 }
 
 /* Hover effect */
-button:hover {
+.icons:hover {
   background-color: #f1f1f1;
   border-radius: 50%;
 }

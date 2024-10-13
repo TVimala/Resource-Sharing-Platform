@@ -42,7 +42,7 @@ function Saved() {
        {saved.map((file, index) => (
           <FileDisplay
             key={index}
-            driveLink={file.driveLink}    // Pass file URL
+            url={file.url}    // Pass file URL
             fileName={file.fileName}      // Pass file name
             tags={file.tags}              // Pass file tags
             uploaderName={file.uploaderName} // Pass uploader's name
