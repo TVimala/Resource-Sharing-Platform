@@ -41,7 +41,7 @@ const UploadBar = ({ courseName, username, userId, onUploadSuccess }) => {
       setIsUploadSuccess(true); // Set success to true
 
       // Call the prop function to inform the parent to fetch uploads
-      onUploadSuccess();
+      // onUploadSuccess();
 
       // Reset form fields
       setLink("");
