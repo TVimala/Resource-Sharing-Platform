@@ -13,6 +13,7 @@ function Liked() {
       let res=await fetch(`http://localhost:4000/user-api/user-liked/${currentUser.username}`)
       let data=await res.json()
       if(res.ok){
+        console.log("Fetched Liked Files:", data);
         setliked(data.payload.liked);
         setMsg("")
       }
@@ -42,7 +43,7 @@ function Liked() {
        {liked.map((file, index) => (
           <FileDisplay
             key={index}
-            driveLink={file.driveLink}    // Pass file URL
+            url={file.url}    // Pass file URL
             fileName={file.fileName}      // Pass file name
             tags={file.tags}              // Pass file tags
             uploaderName={file.uploaderName} // Pass uploader's name

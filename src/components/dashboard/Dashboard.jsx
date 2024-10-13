@@ -1,24 +1,27 @@
-import React from 'react'
-import './Dashboard.css'
+import React, { useContext } from 'react';
+import './Dashboard.css';
 import { Link } from 'react-router-dom';
 import { MdHome } from "react-icons/md";
 import { FiUpload } from "react-icons/fi";
-import { FaRegBookmark } from "react-icons/fa";
+import { FaRegBookmark,FaUserEdit } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { ImBooks } from "react-icons/im";
-import { useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
 import { Outlet } from 'react-router-dom';
+
 function Dashboard() {
   let { logoutUser, currentUser } = useContext(userLoginContext);
+
+
   return (
     <div className='dashboard-container'>
       <aside className='dashboard-sidebar'>
-        <div className="profile d-flex">
-        <img className='image' src="profile.png" alt="profile image" />
-        <h3>{currentUser.username}</h3>
+        <div className="profile">
+
+         <h1>{currentUser.username}</h1>
         </div>
+        
         <ul className='dashboard-links'>
           <li className='nav-item'>
             <MdHome className='fs-2'/>
@@ -39,6 +42,10 @@ function Dashboard() {
           <li className='nav-item'>
             <FaHeart className='fs-2'/>
             <Link to="/liked" className='nav-link  fs-4'>Liked</Link>
+          </li>
+          <li className='nav-item'>
+            <FaUserEdit className='fs-2'/>
+            <Link to="/editProfile" className='nav-link text-dark fs-4'>Edit Profile</Link>
           </li>
           <li className='nav-item'>
             <RiLogoutCircleLine className='fs-2'/>

@@ -61,6 +61,7 @@
     display: inline-block;
   }
   /* General styles for buttons */
+  
 /* Default button styles */
 .dbutton {
   background-color: transparent;
@@ -76,7 +77,7 @@
 }
 
 /* Hover effect */
-button:hover {
+.icons:hover {
   background-color: #f1f1f1;
   border-radius: 50%;
 }

@@ -5,7 +5,7 @@ function Upload() {
   const { currentUser } = useContext(userLoginContext);
   const [uploads, setUploads] = useState([]);
   const [msg, setMsg] = useState('');
-  async function fetchUploads(username){
+  async function fetchUploads(){
     try {
       let res=await fetch(`http://localhost:4000/user-api/user-uploads/${currentUser.username}`);
       let data = await res.json();
@@ -34,7 +34,7 @@ function Upload() {
        { uploads.map((file, index) => (
           <FileDisplay
             key={index}
-            driveLink={file.driveLink}
+            url={file.url}
             fileName={file.fileName}
             tags={file.tags}
             uploaderName={file.uploaderName}
