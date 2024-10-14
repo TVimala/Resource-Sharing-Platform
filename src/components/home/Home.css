@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Raleway:wght@300;700&display=swap');
 body {
     font-family: 'Poppins', sans-serif;
@@ -17,6 +18,9 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    text-align: center;
+    padding: 0 20px;
+    color: #FFFFFF; /* White text for good contrast */
 }
 /* Overlay to create a blurred effect */
 .home-container::before {
@@ -35,30 +39,24 @@ body {
     height: 90px;
     background-color: #1976D2; /* Medium blue button */
     color: #E3F2FD; /* Light blue text */
+
     font-family: 'Raleway', sans-serif;
-    font-size: 1.8rem;
     border: none;
     border-radius: 50px;
+    margin-top: 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 6px 12px rgba(25, 118, 210, 0.3); /* Soft blue shadow */
-    margin-bottom: 30px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0px 8px 20px rgba(25, 118, 210, 0.5);
+    animation: popIn 1.5s ease-in-out both;
 }
 
-.home-container .start:hover {
-    background-color: #64B5F6; /* Lighter blue on hover */
-    box-shadow: 0 10px 20px rgba(25, 118, 210, 0.4);
+.start-btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 12px 24px rgba(25, 118, 210, 0.6);
+    background-color: #64B5F6;
 }
 
-.resource {
-    font-weight: 700;
-    font-size: 6rem;
-    font-family: 'Raleway', sans-serif;
-    color: white; /* Dark blue for the main title */
-    margin-bottom: 40px;
-    z-index: 1;
-}
-
+/* About Section */
 .about-section {
     padding: 50px;
     background-color: #1565C0; 
@@ -69,45 +67,110 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1;
-}
-
-.about-image {
-    width: 40%;
-    height: 300px;
-    object-fit: cover;
-    margin-left: 10px;
+    background-color: rgba(21, 101, 192, 0.85); /* Semi-transparent blue background */
+    border-radius: 20px;
+    padding: 50px;
+    width: 80%;
+    margin: 50px 0;
+    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1.5s ease-out both;
 }
 
 .about-text {
     width: 55%;
+    color: #E3F2FD; /* Light blue text that matches the background */
+    font-family: 'Poppins', sans-serif; /* Clean font for body text */
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFFFFF; /* White for good readability */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #B3E5FC; /* Light, soft blue for a balanced look */
+}
+
+.about-image {
+    width: 40%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.about-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Fade-in animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        width: 50%;
+    }
+
+    .about-image {
+        width: 50%;
+        margin-top: 0px;
+    }
 }
 
 @media (max-width: 768px) {
-    .image {
-        flex-direction: column;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
+    .resource {
+        font-size: 3rem;
     }
 
-    .image .box {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .about-section {
-        flex-direction: column;
-    }
-    .about-image,
-    .about-text {
-        width: 100%;
-        margin-left: 0;
+    .start-btn {
+        padding: 12px 30px;
+        font-size: 1.2rem;
     }
 }
 
-@media (max-width: 576px) {
-    .image .box {
-        width: 100%;
-    }
-}

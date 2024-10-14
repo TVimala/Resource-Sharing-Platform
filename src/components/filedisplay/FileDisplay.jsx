@@ -46,7 +46,7 @@ function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
     let username = currentUser.username;
     const fileObj = { url, fileName };
     try {
-      let res = await fetch(`http://localhost:4000/user-api/delete-uploads/${username}`, {
+      let res = await fetch(`https://file-api-huow.onrender.com/user-api/delete-uploads/${username}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fileObj)
@@ -83,15 +83,15 @@ function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
             </div>
           )}
         </div>
-        <button type="button" onClick={handleSaveToggle} className='icons'>
+        <button type="button" className='icons' onClick={handleSaveToggle}>
           {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
         </button>
-        <button type="button" onClick={handleLikeToggle} className='icons'>
+        <button type="button" className='icons'  onClick={handleLikeToggle}>
           {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
         {isUpload && uploaderName === currentUser.username && (
-          <button className='icons'
-            type="button" 
+          <button 
+            type="button" className='icons' 
             onClick={deleteFile}>
             <MdDelete style={{ color: 'red' }} />
           </button>

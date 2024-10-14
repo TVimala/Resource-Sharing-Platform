@@ -10,7 +10,7 @@ function Saved() {
 
   async function fetchsaved(){
     try{
-      let res=await fetch(`http://localhost:4000/user-api/user-saved/${currentUser.username}`)
+      let res=await fetch(`https://file-api-huow.onrender.com/user-api/user-saved/${currentUser.username}`)
       let data=await res.json()
       if(res.ok){
         setsaved(data.payload.saved)

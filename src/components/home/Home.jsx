@@ -11,10 +11,12 @@ function Home() {
     }
   }
   return (
-    <div className='home-container text-center'>
-      {/* First image design: Header and button */}
-      <h1 className='resource p-3'>Resource-Sharing-Platform</h1>
-
+    <div className="home-container">
+      {/* Header Section with Title and Button */}
+      <header className="header-content">
+        <h1 className="resource">Resource-Sharing-Platform</h1>
+        <button className="start-btn">Get Started</button>
+      </header>
       <button className="start btn fs-4 bg-white">START</button>
 
       {/* Second image design: Courses section */}
@@ -27,7 +29,8 @@ function Home() {
         <div className='about-text'>
           <h2>About</h2>
           <p>
-          ResoLink is a platform where students can upload and find academic resources with ease. Use tags to categorize and search for notes, study guides, and more. Join ResoLink to access a wide range of shared materials and boost your learning.          </p>
+            ResoLink is a platform where students can upload and find academic resources with ease. Categorize and search for notes, study guides, and more. Join ResoLink to access a wide range of shared materials and elevate your learning experience.
+          </p>
         </div>
         <img src='bookshelf.jpg' alt='Bookshelf' className='about-image' />
       </div>
@@ -38,9 +41,7 @@ function Home() {
       <div>
       {/* <Totalusers></Totalusers> */}
       </div>
+
     </div>
   );
 }
-
-export default Home;
-
