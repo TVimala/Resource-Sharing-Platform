@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
-<<<<<<< HEAD
+// import Totalusers from '../totalusers/Totalusers';
+import { FaChevronDown } from "react-icons/fa6";
 import backgroundImage from '/background.jpg'; // Vite asset handling
 
 function Home() {
@@ -9,17 +10,12 @@ function Home() {
     backgroundImage: `url(${backgroundImage})`
   };
 
-=======
-import Totalusers from '../totalusers/Totalusers';
-import { FaChevronDown } from "react-icons/fa6";
-function Home() {
-  const handleScroll = () => {
-    const element = document.getElementById("projects");
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
->>>>>>> d84ec1c27b41801070e325ec87112375937161bb
+  // const handleScroll = () => {
+  //   const element = document.getElementById("projects");
+  //   if (element) {
+  //       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //   }
+  // }
   return (
     <div className="home-container" style={homeContainerStyle}>
       {/* Header Section with Title and Button */}
