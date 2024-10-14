@@ -25,7 +25,7 @@ const UploadBar = ({ courseName, username, userId, onUploadSuccess }) => {
     console.log(courseName);
     
     try {
-      const response = await fetch(`http://localhost:4000/course-api/${courseName}/files`, {
+      const response = await fetch(`https://file-api-huow.onrender.com/course-api/${courseName}/files`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resource),
@@ -41,7 +41,7 @@ const UploadBar = ({ courseName, username, userId, onUploadSuccess }) => {
       setIsUploadSuccess(true); // Set success to true
 
       // Call the prop function to inform the parent to fetch uploads
-      onUploadSuccess();
+      // onUploadSuccess();
 
       // Reset form fields
       setLink("");

@@ -11,6 +11,7 @@ import RoutingError from './components/RoutingError'
 import Uploads from './components/uploads/Upload'
 import CourseDetails from './components/courseDetails/CourseDetails'
 import Courses from './components/courses/Courses'
+import EditProfile from './components/editProfile/EditProfile'
 import { useContext } from 'react'
 import { userLoginContext } from './contexts/userLoginContext'
 
@@ -46,6 +47,10 @@ function App({children}) {
           {
             path: '/profile',
             element: isLogin ? <Profile /> : <Navigate to="/login" replace />
+          },
+          {
+            path: '/editProfile',
+            element: isLogin ? <EditProfile /> : <Navigate to="/login" replace />
           },
           {
             path: '/uploads',

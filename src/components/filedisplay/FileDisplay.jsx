@@ -1,4 +1,4 @@
-// FileDisplay.js
+
 import React, { useState, useContext } from 'react';
 import './FileDisplay.css';
 import { FaFileAlt, FaRegHeart } from 'react-icons/fa';
@@ -7,18 +7,19 @@ import { userLoginContext } from '../../contexts/userLoginContext';
 import { FcLike } from "react-icons/fc";
 import { MdDelete } from "react-icons/md"; 
 
-function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
+function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
 
   const [message, setMessage] = useState('');
   const { currentUser, savedFiles, addToSaved, removeFromSaved, likedFiles, addToLiked, removeFromLiked } = useContext(userLoginContext);
 
+
   // Check if the file is saved based on the global savedFiles array
-  const isSaved = savedFiles.some((file) => file.driveLink === driveLink && file.fileName === fileName);
-  const isLiked = likedFiles.some((file) => file.driveLink === driveLink && file.fileName === fileName);
+  const isSaved = savedFiles.some((file) => file.url === url && file.fileName === fileName);
+  const isLiked = likedFiles.some((file) => file.url === url && file.fileName === fileName);
 
   // Add to saved handler
   const handleSaveToggle = () => {
-    const fileObj = { driveLink, fileName, tags, uploaderName };
+    const fileObj = { url, fileName, tags, uploaderName };
     if (isSaved) {
       removeFromSaved(fileObj);
       setMessage('File removed from saved items!');
@@ -30,7 +31,7 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
 
    // Add to liked handler
    const handleLikeToggle = () => {
-    const fileObj = { driveLink, fileName, tags, uploaderName };
+    const fileObj = { url, fileName, tags, uploaderName };
     if (isLiked) {
       removeFromLiked(fileObj);
       setMessage('File removed from liked items!');
@@ -43,9 +44,9 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
   //Delete Upload function
  async function deleteFile() {
     let username = currentUser.username;
-    const fileObj = { driveLink, fileName };
+    const fileObj = { url, fileName };
     try {
-      let res = await fetch(`http://localhost:4000/user-api/delete-uploads/${username}`, {
+      let res = await fetch(`https://file-api-huow.onrender.com/user-api/delete-uploads/${username}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fileObj)
@@ -68,7 +69,7 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
       <div className="file-card-content">
         <FaFileAlt className="file-icon" />
         <div className="file-details">
-          <a href={driveLink} target="_blank" rel="noopener noreferrer" className="file-link">
+          <a href={url} target="_blank" rel="noopener noreferrer" className="file-link">
             <span className="file-name">{fileName || 'Click to view the file'}</span>
           </a>
           {uploaderName && <div className="uploader-name">Uploaded by: {uploaderName}</div>}
@@ -82,15 +83,15 @@ function FileDisplay({ driveLink, fileName, tags, uploaderName,isUpload }) {
             </div>
           )}
         </div>
-        <button type="button" onClick={handleSaveToggle}>
+        <button type="button" className='icons' onClick={handleSaveToggle}>
           {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
         </button>
-        <button type="button" onClick={handleLikeToggle}>
+        <button type="button" className='icons'  onClick={handleLikeToggle}>
           {isLiked ? <FcLike />:<FaRegHeart />}
         </button>
         {isUpload && uploaderName === currentUser.username && (
           <button 
-            type="button" 
+            type="button" className='icons' 
             onClick={deleteFile}>
             <MdDelete style={{ color: 'red' }} />
           </button>

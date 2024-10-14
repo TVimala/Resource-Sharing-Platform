@@ -21,7 +21,7 @@ function CourseDetails () {
    // Fetch the files from the backend
    async function fetchFiles(){
     try {
-      let res = await fetch(`http://localhost:4000/course-api/${domain}/files`);
+      let res = await fetch(`https://file-api-huow.onrender.com/course-api/${domain}/files`);
       if (!res.ok) {
         throw new Error(`Failed to fetch course materials: ${res.statusText}`);
       }

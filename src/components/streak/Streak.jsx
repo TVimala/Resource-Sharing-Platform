@@ -10,7 +10,7 @@ function Streak() {
  const fetchUserStreak = async () => {
   try {
     let username = currentUser.username;
-    const res = await fetch(`http://localhost:4000/user-api/user-streak/${username}`);
+    const res = await fetch(`https://file-api-huow.onrender.com/user-api/user-streak/${username}`);
     
     if (!res.ok) {
       throw new Error(`Server error: ${res.statusText}`);
