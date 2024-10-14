@@ -3,3 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+button:hover {
+  background-color: initial;
+  color: initial;
+  border: initial;
+  box-shadow: none;
+  transform: none;
+}

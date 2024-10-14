@@ -52,8 +52,8 @@ function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
         body: JSON.stringify(fileObj)
       });
       
-      let data = await res.json();
-      if (res.ok) {
+      let result = await res.json();
+      if (result.success) {
         setMessage("File deleted successfully!");
       } else {
         setMessage("Failed to delete the file.");

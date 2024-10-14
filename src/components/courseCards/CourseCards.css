@@ -2,29 +2,30 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 20px; /* Increased gap for better spacing */
+  gap: 20px; /* Good spacing */
 }
 
 .card {
-  width: 15rem; 
-  height: 15rem; 
-  border-radius: 1.5rem; 
-  overflow: hidden;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 1.5rem;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(90, 90, 103, 0.5); /* Soft shadow */
-  background-color: #ccd0d3; 
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+  overflow: hidden; /* Ensure content, including background, stays within bounds */
 }
 
 .card:hover {
-  transform: scale(1.05); /* Slight scale effect on hover */
+  transform: scale(1.05); /* Slight zoom effect */
   box-shadow: 0 15px 25px rgba(90, 90, 103, 0.7); /* Stronger shadow on hover */
 }
 
 .card-link {
   text-decoration: none;
   width: 100%;
+  height: 100%; /* Make the link take up the full card */
+  display: block; /* Ensure it behaves like a block element */
 }
 
 .card-background {
@@ -44,37 +45,13 @@
   width: 100%;
   height: 100%;
   color: black;
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
   font-weight: 650;
 }
 
-/* Zigzag effect for cards */
-.row .card:nth-child(odd) {
-  align-self: flex-start; /* Align odd cards at the top */
-}
-
-.row .card:nth-child(even) {
-  align-self: flex-end; /* Align even cards at the bottom */
-}
-
-/* Adjust specific margins for Development and Interview cards if needed */
-.development-adjust {
-  margin-left: 250px; /* Moves Development slightly to the right */
-}
-
-.interview-adjust {
-  margin-right: 250px; /* Moves Interview/Placement slightly to the left */
-}
-
+/* Remove zigzag alignment, it seems unnecessary for this layout */
 @media (max-width: 768px) {
-  /* On smaller screens, reset the zigzag alignment */
   .row .card {
-    align-self: center;
-  }
-
-  .development-adjust,
-  .interview-adjust {
-    margin-left: 0;
-    margin-right: 0;
+    align-self: center; /* Center alignment for small screens */
   }
 }
