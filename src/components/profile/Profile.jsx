@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
-import Uploadgraph from '../uploadGraph/Uploadgraph';
+import Uploadgraph from '../uploadgraph/Uploadgraph';
 import Streak from '../streak/Streak';
 import Badges from '../badges/Badges';
 import './Profile.css'

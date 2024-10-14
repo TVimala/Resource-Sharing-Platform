@@ -48,10 +48,6 @@ function Dashboard() {
             <Link to="/editProfile" className='nav-link text-dark fs-4'>Edit Profile</Link>
           </li>
           <li className='nav-item'>
-            <FaUserEdit className='fs-2'/>
-            <Link to="/editProfile" className='nav-link text-dark fs-4'>Edit Profile</Link>
-          </li>
-          <li className='nav-item'>
             <RiLogoutCircleLine className='fs-2'/>
             <button className='nav-link  fs-4' onClick={logoutUser}>Logout</button>
           </li>
