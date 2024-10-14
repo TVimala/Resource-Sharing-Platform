@@ -1,33 +1,179 @@
-.home-container {
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(Background-img.jpg);
-}
-/* 
-.btn {
-  width: 160px;
-  height: 80px;
-  background-color: #f0e6db; 
-  border: 3px solid #804000; 
-  color: #804000; 
-  font-family: "Times New Roman", serif;
-  font-size: 18px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Raleway:wght@400;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E3F2FD; /* Light blue background */
+    color: #333;
+    overflow-x: hidden;
 }
 
-.btn:hover {
-  background-color: #e0c9b2;
-} */
- .resource {
-    font-family: "Exo 2", sans-serif;
-    font-optical-sizing: auto;
-    font-weight:500;
-    font-style: normal;
-    font-size: 6rem;
- }
+/* Home Container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    background-image: url('../background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+    padding: 0 20px;
+    color: #FFFFFF; /* White text for good contrast */
+}
+
+/* Header Section */
+.header-content {
+    margin-top: 80px;
+}
+
+.resource {
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #F1F1F1; /* Slightly off-white for elegance */
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4); /* Soft shadow for a premium look */
+    animation: fadeInDown 1.2s ease-out both;
+    font-family: 'Raleway', sans-serif; /* More stylish font for header */
+}
+
+/* Button Styling */
+.start-btn {
+    padding: 15px 40px;
+    background-color: #1976D2;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    border-radius: 50px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0px 8px 20px rgba(25, 118, 210, 0.5);
+    animation: popIn 1.5s ease-in-out both;
+}
+
+.start-btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 12px 24px rgba(25, 118, 210, 0.6);
+    background-color: #64B5F6;
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(21, 101, 192, 0.85); /* Semi-transparent blue background */
+    border-radius: 20px;
+    padding: 50px;
+    width: 80%;
+    margin: 50px 0;
+    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1.5s ease-out both;
+}
+
+.about-text {
+    width: 55%;
+    color: #E3F2FD; /* Light blue text that matches the background */
+    font-family: 'Poppins', sans-serif; /* Clean font for body text */
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFFFFF; /* White for good readability */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #B3E5FC; /* Light, soft blue for a balanced look */
+}
+
+.about-image {
+    width: 40%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.about-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Fade-in animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        width: 50%;
+    }
+
+    .about-image {
+        width: 50%;
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    .resource {
+        font-size: 3rem;
+    }
+
+    .start-btn {
+        padding: 12px 30px;
+        font-size: 1.2rem;
+    }
+}
+
