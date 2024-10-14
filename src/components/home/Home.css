@@ -1,15 +1,17 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Raleway:wght@400;700&display=swap');
 import backgroundimage from 
+=======
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Raleway:wght@300;700&display=swap');
+>>>>>>> d84ec1c27b41801070e325ec87112375937161bb
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #E3F2FD; /* Light blue background */
-    color: #333;
-    overflow-x: hidden;
+    background-color: #E3F2FD; 
 }
-
-/* Home Container */
+/* Apply background to the entire container */
 .home-container {
     display: flex;
     flex-direction: column;
@@ -25,30 +27,24 @@ body {
     padding: 0 20px;
     color: #FFFFFF; /* White text for good contrast */
 }
-
-/* Header Section */
-.header-content {
-    margin-top: 80px;
+/* Overlay to create a blurred effect */
+.home-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(21, 101, 192, 0.6); /* Transparent medium blue */
+    z-index: -1;
 }
+.start {
+    padding: 15px;
+    width: 220px;
+    height: 90px;
+    background-color: #1976D2; /* Medium blue button */
+    color: #E3F2FD; /* Light blue text */
 
-.resource {
-    font-size: 4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #F1F1F1; /* Slightly off-white for elegance */
-    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4); /* Soft shadow for a premium look */
-    animation: fadeInDown 1.2s ease-out both;
-    font-family: 'Raleway', sans-serif; /* More stylish font for header */
-}
-
-/* Button Styling */
-.start-btn {
-    padding: 15px 40px;
-    background-color: #1976D2;
-    color: #FFFFFF;
-    font-size: 1.5rem;
-    font-weight: 500;
     font-family: 'Raleway', sans-serif;
     border: none;
     border-radius: 50px;
@@ -67,6 +63,12 @@ body {
 
 /* About Section */
 .about-section {
+    padding: 50px;
+    background-color: #1565C0; 
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    color: #E3F2FD;
     display: flex;
     align-items: center;
     justify-content: space-between;

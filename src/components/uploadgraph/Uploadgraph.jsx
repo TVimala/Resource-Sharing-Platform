@@ -39,7 +39,7 @@ const Uploadgraph = ({ username }) => {
         <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
-        <Line dataKey="uploads" fill="#8884d8" />
+        <Line dataKey="uploads" fill="#1565C0"/>
       </LineChart>
 
        {/* <LineChart width={500} height={300} data={uploadData}>

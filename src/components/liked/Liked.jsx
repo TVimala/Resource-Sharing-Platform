@@ -36,7 +36,7 @@ function Liked() {
 
   return (
     <>
-    <h1>Your liked</h1>
+    <h1 className='text-center'>Your liked</h1>
     {msg && <p className="error-message">{msg}</p>}
     {liked && liked.length > 0 ? (
         <div className="file-card-container">

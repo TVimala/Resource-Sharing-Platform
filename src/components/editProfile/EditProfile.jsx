@@ -1,157 +1,70 @@
-import React, { useState, useEffect } from 'react';
 
-const UserProfile = () => {
-  const [userDetails, setUserDetails] = useState({
-    name: '',
-    email: '',
-    phone: '',
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { userLoginContext } from '../../contexts/userLoginContext';
 
-  // Fetch user details when the component loads
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const response = await fetch('/user-api/user/profile', {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        });
-        const data = await response.json();
-        if (response.ok) {
-          setUserDetails(data);
-        } else {
-          setError('Failed to fetch user details');
-        }
-      } catch (err) {
-        setError('Failed to fetch user details');
-      }
-    };
-    
-    fetchUserDetails();
-  }, []);
+function EditProfile() {
+  let { register, handleSubmit, setValue } = useForm();
+  let { currentUser, setCurrentUser } = useContext(userLoginContext);
+  let navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value,
-    }));
-  };
+  async function onsave(modifiedUser){
+    console.log(modifiedUser)
+    let res=await fetch('http://localhost:4000/user-api/update-user',{
+      method:'PUT',
+      headers:{"Content-type":"application/json"},
+      body:JSON.stringify(modifiedUser)
+    })
+    let data=await res.json()
+    console.log(data)
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    setSuccess('');
-
-    try {
-      const response = await fetch('/user-api/user/profile', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-        body: JSON.stringify(userDetails),
-      });
-
-      if (response.ok) {
-        setSuccess('Profile updated successfully!');
-      } else {
-        setError('Failed to update profile');
-      }
-    } catch (err) {
-      setError('Failed to update profile');
-    } finally {
-      setLoading(false);
+    if(data.message='user updated'){
+      modifiedUser.id=currentUser.id
+      setCurrentUser(modifiedUser); 
+      navigate('/user-profile')
     }
-  };
-
-  const handleDeleteAccount = async () => {
-    if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-      setLoading(true);
-      setError('');
-      setSuccess('');
-
-      try {
-        const response = await fetch(`/user-api/user/profile`, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        });
-
-        if (response.ok) {
-          alert('Account deleted successfully!');
-          window.location.href = '/login'; // Redirect to login page
-        } else {
-          setError('Failed to delete account');
-        }
-      } catch (err) {
-        setError('Failed to delete account');
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
+  }
   return (
     <div>
-      <h2>Edit Profile</h2>
+       <form className='mx-auto mt-5 bg-light shadow-md p-3' onSubmit={handleSubmit(onsave)}>
+            <label htmlFor="" className='form-label'>Username</label>
+             <input
+                type="text"  
+                {...register('username',{required:true})} 
+                className='form-control mb-3' 
+                name="username" id="username" 
+                value={setValue("username",currentUser.username)} 
+                disabled />
+             
+             {/* {errors.username?.type==='required'&& <p className="text-danger">Username is required</p> } */}
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>}
+            <label htmlFor="" className='form-label'>Email</label>
+            <input type="email" {...register('email',{required:true})} className='form-control mb-3' name="email" id="email"
+            value={setValue("email",currentUser.email)} />
+            {/* {errors.email?.type==='required'&& <p className="text-danger">Email is required</p> } */}
 
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={userDetails.name}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+            <label htmlFor="" className='form-label'>Password</label>
+            <input type="password" {...register('password',{required:true})} className='form-control mb-3' name="password" id="password" 
+             value={setValue("password",currentUser.password)}
+            disabled/>
+            {/* {errors.password?.type==='required'&& <p className="text-danger">Password is required</p> } */}
 
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={userDetails.email}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+            <label htmlFor="" className='form-label'>Mobile</label>
+            <input type="tel" {...register('mobile',{required:true})} className='form-control mb-3' name="mobile" id="mobile"
+            value={setValue("mobile",currentUser.mobile)} />
+            {/* {errors.mobile?.type==='required'&& <p className="text-danger">Mobile is required</p> } */}
 
-        <div>
-          <label>Phone:</label>
-          <input
-            type="text"
-            name="phone"
-            value={userDetails.phone}
-            onChange={handleInputChange}
-          />
-        </div>
+            <label htmlFor="" className='form-label'>Paste Img URL</label>
+            <input type="text" {...register('image', { required: true })} className='form-control mb-3' id="url"
+            value={setValue("image",currentUser.image)}
+            disabled />
+            {/* {errors.image?.type === 'required' && <p className="text-danger">URL is required</p>} */}
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Updating...' : 'Update Profile'}
-        </button>
-      </form>
-
-      <hr />
-
-      <h3>Danger Zone</h3>
-      <button
-        onClick={handleDeleteAccount}
-        style={{ color: 'red' }}
-        disabled={loading}
-      >
-        {loading ? 'Deleting...' : 'Delete Account'}
-      </button>
+            <button className="btn btn-info d-block mx-auto" type='submit'>Save</button>
+          </form>
     </div>
-  );
-};
-
-export default UserProfile;
+  )
+}
+export default EditProfile;
