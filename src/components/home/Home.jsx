@@ -1,10 +1,15 @@
-
 import React from 'react';
 import './Home.css';
+import backgroundImage from '/background.jpg'; // Vite asset handling
 
 function Home() {
+  // Apply background image to the home container
+  const homeContainerStyle = {
+    backgroundImage: `url(${backgroundImage})`
+  };
+
   return (
-    <div className="home-container">
+    <div className="home-container" style={homeContainerStyle}>
       {/* Header Section with Title and Button */}
       <header className="header-content">
         <h1 className="resource">Resource-Sharing-Platform</h1>
@@ -24,3 +29,5 @@ function Home() {
     </div>
   );
 }
+
+export default Home;
