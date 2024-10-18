@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Raleway:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500&display=swap');
 
+
 @font-face {
     font-family: 'Masiku';
     src: url('../../fonts/Masiku.ttf') format('truetype'); /* Ensure this path is correct */
@@ -50,7 +51,7 @@ body {
 }
 
 .resource {
-    font-family: 'Masiku';
+    font-style: 'Masiku';
     font-size: 7rem; /* Increased font size for the title */
     margin-bottom: 20px; /* Space between title and button */
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); 
