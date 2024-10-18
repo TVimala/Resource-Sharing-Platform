@@ -2,7 +2,7 @@ import React,{ useState,useContext,useEffect } from 'react'
 import { userLoginContext } from '../../contexts/userLoginContext'
 import FileDisplay from '../filedisplay/FileDisplay'
 import { ClipLoader } from 'react-spinners'
-import './liked.css';
+import './Liked.css';
 function Liked() {
   const { currentUser } = useContext(userLoginContext)
   const [liked,setliked] =useState([])
