@@ -1,37 +1,58 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
-// import Totalusers from '../totalusers/Totalusers';
-import { FaChevronDown } from "react-icons/fa6";
 import backgroundImage from '/background.jpg'; // Vite asset handling
-
+import Totalusers from '../totalusers/Totalusers';
 function Home() {
+  const navigate = useNavigate(); // Hook for navigation
+
   // Apply background image to the home container
   const homeContainerStyle = {
     backgroundImage: `url(${backgroundImage})`
   };
 
-  // const handleScroll = () => {
-  //   const element = document.getElementById("projects");
-  //   if (element) {
-  //       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  //   }
-  // }
+  // Scroll to the About section when "About" button is clicked
+  const handleScrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleStartClick = () => {
+    navigate('/login'); // Navigate to the login page
+  };
+
   return (
+    <>
+     {/* Header Section */}
+    <div className='header'>
+    <div className='logo'>
+      <h2>ResoLink</h2>
+    </div>
+    <ul className='nav justify-content-end'>
+      <li className='nav-item'>
+        <Link to="login" className='nav-link text-white'>
+          <h3>Login</h3>
+        </Link>
+      </li>
+      <li className='nav-item'>
+        <button onClick={handleScrollToAbout} className='nav-link text-white'>
+          <h3>About</h3>
+        </button>
+      </li>
+    </ul>
+  </div>
     <div className="home-container" style={homeContainerStyle}>
-      {/* Header Section with Title and Button */}
+      {/* Main Section with Title and Button */}
       <header className="header-content">
-        <h1 className="resource">Resource-Sharing-Platform</h1>
-        <button className="start-btn">Get Started</button>
+        <h1 className="resource">Resource-Sharing Platform</h1>
+        <button className="start-btn" onClick={handleStartClick}>Get Started</button>
       </header>
-      <button className="start btn fs-4 bg-white">START</button>
+      <Totalusers/>
 
-      {/* Second image design: Courses section */}
-      {/* <div className='courseimg m-5 d-flex'>
-        <CourseCards cardData={cardData} />
-      </div> */}
-
-      {/* Third image design: About section */}
-      <div className='about-section d-flex m-3'>
+      {/* About Section */}
+      <div className='about-section d-flex m-3' id='about'>
         <div className='about-text'>
           <h2>About</h2>
           <p>
@@ -40,15 +61,13 @@ function Home() {
         </div>
         <img src='bookshelf.jpg' alt='Bookshelf' className='about-image' />
       </div>
-      {/* <div className='d-flex justify-content-center'>
-       <button className='dive px-4 py-2  border-0 fs-4 mb-5'onClick={handleScroll}>Dive in <FaChevronDown className='g-1'/>
-       </button>
-       </div> */}
-      <div>
-      {/* <Totalusers></Totalusers> */}
-      </div>
 
+      {/* Copyright Section */}
+      <footer className="footer">
+        <p>&copy; {new Date().getFullYear()} Resource-Sharing-Platform. All rights reserved.</p>
+      </footer>
     </div>
+    </>
   );
 }
 

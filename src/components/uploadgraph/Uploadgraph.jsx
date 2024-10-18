@@ -1,54 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { LineChart, BarChart, Line, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
-import {userLoginContext} from '../../contexts/userLoginContext'
-import { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { userLoginContext } from '../../contexts/userLoginContext';
+import './Uploadgraph.css'; // Import the CSS for styling
 
-const Uploadgraph = ({ username }) => {
+const Uploadgraph = () => {
   const [uploadData, setUploadData] = useState([]);
-  let {currentUser}=useContext(userLoginContext)
+  const [loading, setLoading] = useState(true); // State for loading
+  const { currentUser } = useContext(userLoginContext);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Set loading to true before fetching data
       try {
-        let username=currentUser.username
+        const username = currentUser.username;
 
-        const response = await fetch(`https://file-api-huow.onrender.com/user-api/user-uploads/${username}/daily`);
+       const response = await fetch(`https://file-api-huow.onrender.com/user-api/user-uploads/${username}/daily`);
+      //  const response = await fetch(`http://localhost:4000/user-api/user-uploads/${username}/daily`);
         const result = await response.json();
-        console.log('Full response:', result); // Check the full response
-
+        
         // Check and format the response data
         if (result.payload) {
-          console.log('Data fetched:', result.payload); // Check the payload data
-          setUploadData(result.payload);  // Set the actual payload for chart
+          setUploadData(result.payload); // Set the actual payload for chart
         } else {
-          console.log('No payload in response');
-          setUploadData([]);  // Handle cases where payload is missing
+          setUploadData([]); // Handle cases where payload is missing
         }
       } catch (error) {
-        console.log('Error fetching data:', error);
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching data
       }
     };
 
     fetchData();
-  }, [username]);
+  }, [currentUser.username]);
 
   return (
-    <ResponsiveContainer width="70%" height={200} className='m-3'>
-      <LineChart data={uploadData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Line dataKey="uploads" fill="#1565C0"/>
-      </LineChart>
-
-       {/* <LineChart width={500} height={300} data={uploadData}>
-    <XAxis dataKey="date"/>
-    <YAxis/>
-    <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-    <Line type="monotone" dataKey="uploads" stroke="#8884d8" />
-  </LineChart> */}
-    </ResponsiveContainer>
+    <div className="upload-graph-container">
+      <h4 className="graph-title">Upload Activity Over Time</h4>
+      {loading ? (
+        <div className="loader">Loading...</div> // Loader while fetching data
+      ) : uploadData.length === 0 ? (
+        <div className="no-data-message">No upload data available for your account.</div> // Message when no data
+      ) : (
+        <ResponsiveContainer width="100%" height={200} className="m-3">
+          <LineChart data={uploadData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="uploads" stroke="#1565C0" />
+          </LineChart>
+        </ResponsiveContainer>
+      )}
+    </div>
   );
 };
 

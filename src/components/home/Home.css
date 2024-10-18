@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Raleway:wght@400;700&display=swap');
-import backgroundimage from 
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500&display=swap');
+
+@font-face {
+    font-family: 'Masiku';
+    src: url('../../fonts/Masiku.ttf') format('truetype'); /* Ensure this path is correct */
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Masiku';
     margin: 0;
     padding: 0;
     background-color: #E3F2FD; 
 }
+
 /* Apply background to the entire container */
 .home-container {
     display: flex;
@@ -14,7 +21,6 @@ body {
     justify-content: center;
     min-height: 100vh;
     position: relative;
-    background-image: url('/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -22,6 +28,7 @@ body {
     padding: 0 20px;
     color: #FFFFFF; /* White text for good contrast */
 }
+
 /* Overlay to create a blurred effect */
 .home-container::before {
     content: '';
@@ -33,17 +40,31 @@ body {
     background-color: rgba(21, 101, 192, 0.6); /* Transparent medium blue */
     z-index: -1;
 }
-.start {
-    padding: 15px;
+
+.header-content {
+    display: flex;
+    flex-direction: column; /* Stack title and button vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    margin-top: 50px; /* Space above header */
+}
+
+.resource {
+    font-family: 'Masiku';
+    font-size: 7rem; /* Increased font size for the title */
+    margin-bottom: 20px; /* Space between title and button */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.start-btn {
+    padding: 15px 30px;
     width: 220px;
-    height: 90px;
     background-color: #1976D2; /* Medium blue button */
     color: #E3F2FD; /* Light blue text */
-
     font-family: 'Raleway', sans-serif;
     border: none;
     border-radius: 50px;
-    margin-top: 30px;
+    margin-top: 20px; /* Adjust margin for better spacing */
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     box-shadow: 0px 8px 20px rgba(25, 118, 210, 0.5);
@@ -59,27 +80,21 @@ body {
 /* About Section */
 .about-section {
     padding: 50px;
-    background-color: #1565C0; 
-    width: 80%;
-    margin: 0 auto;
-    text-align: left;
-    color: #E3F2FD;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: rgba(21, 101, 192, 0.85); /* Semi-transparent blue background */
     border-radius: 20px;
-    padding: 50px;
     width: 80%;
     margin: 50px 0;
+    margin-bottom: 30px;
     box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 1.5s ease-out both;
+    display: flex;
+    align-items: center;
 }
 
+/* About Text */
 .about-text {
     width: 55%;
     color: #E3F2FD; /* Light blue text that matches the background */
-    font-family: 'Poppins', sans-serif; /* Clean font for body text */
 }
 
 .about-text h2 {
@@ -98,6 +113,7 @@ body {
     color: #B3E5FC; /* Light, soft blue for a balanced look */
 }
 
+/* About Image */
 .about-image {
     width: 40%;
     height: auto;
@@ -112,18 +128,57 @@ body {
     box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* Fade-in animations */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Footer */
+.footer {
+    width: 100%;
+    color: #E3F2FD;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Add margin to separate from the content above */
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px; /* Reduced padding */
+    background-color: rgba(21, 101, 192, 0.85); /* Same color as About section */
+}
+
+.logo {
+    font-family: "Great Vibes", cursive; 
+    font-size: 60px; /* Further reduced font size */
+    color: #E3F2FD;
+    margin: 0;
+}
+
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 15px; /* Reduced margin */
+}
+
+.nav-link {
+    font-family: "Poppins", sans-serif; 
+    color: #E3F2FD; 
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem; /* Adjust font size */
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.nav-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Fade-in animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -154,12 +209,12 @@ body {
     }
 
     .about-text {
-        width: 50%;
+        width: 100%; /* Take full width on smaller screens */
     }
 
     .about-image {
-        width: 50%;
-        margin-top: 0px;
+        width: 80%; /* Adjust image size */
+        margin-top: 20px; /* Add margin on top */
     }
 }
 
@@ -173,4 +228,3 @@ body {
         font-size: 1.2rem;
     }
 }
-

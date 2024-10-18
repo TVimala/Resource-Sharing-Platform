@@ -1,0 +1,38 @@
+/* Loader Container */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px; /* Ensure it takes enough vertical space */
+  }
+  
+  /* Error message styling */
+  .error-message {
+    font-size: 1.2rem;
+    color: #ff6b6b; /* Bootstrap danger color */
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* No saved items container */
+  .no-saved-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .no-saved-container h2 {
+    font-size: 1.8rem;
+    color: #adb5bd; /* Muted color for no uploads */
+  }
+  
+  .no-saved-container p {
+    font-size: 1.2rem;
+    color: #6c757d; /* Muted grey */
+  }
+   
+ /* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .file-card-container {
+      grid-template-columns: 1fr; /* Stack file cards on smaller screens */
+    }
+  }

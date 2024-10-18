@@ -21,7 +21,9 @@ function CourseDetails () {
    // Fetch the files from the backend
    async function fetchFiles(){
     try {
-      let res = await fetch(`https://file-api-huow.onrender.com/course-api/${domain}/files`);
+     let res = await fetch(`https://file-api-huow.onrender.com/course-api/${domain}/files`);
+     // let res = await fetch(`http://localhost:4000/course-api/${domain}/files`);
+
       if (!res.ok) {
         throw new Error(`Failed to fetch course materials: ${res.statusText}`);
       }
@@ -47,15 +49,6 @@ function CourseDetails () {
       ) : (
         <div>
             <SearchBar files={files}/>
-          {/* {files.map((file, index) => (
-            <FileDisplay
-               key={index}
-              driveLink={file.url}
-              fileName={file.fileName}
-              tags={file.tags}
-              uploaderName={file.uploaderName}
-            />
-          ))} */}
         </div>
       )}
       <UploadBar  

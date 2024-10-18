@@ -6,8 +6,8 @@ const Skillbar = () => {
   const [msg,setMsg] = useState("")
   async function fetchCourseCounts() {
     try {
-      let res = await fetch(`https://file-api-huow.onrender.com/course-api/courses/upload-counts`); 
-
+      //let res = await fetch(`https://file-api-huow.onrender.com/course-api/courses/upload-counts`); 
+      let res = await fetch(`http://localhost:4000/course-api/courses/upload-counts`); 
       if (res.ok) {
         setCourseCounts(data.courseUploadCounts); // Assuming the backend returns a `courseUploadCounts` object
         setMsg(''); // Clear any previous error message

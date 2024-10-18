@@ -9,11 +9,6 @@ import FileDisplay from '../filedisplay/FileDisplay';
 function SearchBar({ files = [] }) {  
   const [input, setInput] = useState('');
 
-  // const filteredFiles = files.filter(file => 
-  //   file.tags.some(tag => tag.toLowerCase().includes(input.toLowerCase()))
-  // );
-
-
   // Ensure files is always an array and check for the presence of tags
   const filteredFiles = Array.isArray(files) 
     ? files.filter(file => 
@@ -28,12 +23,13 @@ function SearchBar({ files = [] }) {
 
   return (
     <div className="search-bar-container">
-      <Form className="search-bar" onSubmit={handleSubmit}>
-        <InputGroup className="m-2">
-          <InputGroup.Text>
+      <Form className="search-bar-form" onSubmit={handleSubmit}>
+        <InputGroup className="search-bar-input-group">
+          <InputGroup.Text className="search-icon">
             <IoIosSearch />
           </InputGroup.Text>
           <Form.Control
+            className="search-input"
             placeholder="Search by tags"
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -42,16 +38,16 @@ function SearchBar({ files = [] }) {
       </Form>
       <div className="file-display-container mt-3">
         {filteredFiles.length > 0 ? (
-    <div className="file-card-container">
-       {filteredFiles.map((file, index) => (
-            <FileDisplay
-              key={index}
-              driveLink={file.url}
-              fileName={file.fileName}
-              tags={file.tags}
-              uploaderName={file.uploaderName}
-            />
-          ))}
+          <div className="file-card-container">
+            {filteredFiles.map((file, index) => (
+              <FileDisplay
+                key={index}
+                driveLink={file.url}
+                fileName={file.fileName}
+                tags={file.tags}
+                uploaderName={file.uploaderName}
+              />
+            ))}
           </div>
         ) : (
           <p>No files match your search.</p>
@@ -61,4 +57,4 @@ function SearchBar({ files = [] }) {
   );
 }
 
-export default SearchBar;
+export default SearchBar; 

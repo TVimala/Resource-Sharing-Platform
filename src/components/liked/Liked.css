@@ -1,0 +1,40 @@
+/* Center the loader */
+.loader-container {
+    min-height: 200px; /* Minimum height to provide spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Styling for the error message */
+  .error-message {
+    color: #ff6b6b; /* Red for errors */
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  
+  /* Styling for "No liked found" message */
+  .no-liked-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .no-liked-container h2 {
+    font-size: 1.8rem;
+    color: #adb5bd; /* Muted color for no liked */
+  }
+  
+  .no-liked-container p {
+    font-size: 1.2rem ;
+    color: #6c757d; /* Muted grey */
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .file-card-container {
+      grid-template-columns: 1fr; /* Stack file cards on smaller screens */
+    }
+  }
+  

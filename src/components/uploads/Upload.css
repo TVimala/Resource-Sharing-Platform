@@ -1,46 +1,38 @@
-.upload-container {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+/* Center the loader */
+.loader-container {
+  min-height: 200px; /* Minimum height to provide spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for the error message */
+.error-message {
+  color: #ff6b6b; /* Red for errors */
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Styling for "No uploads found" message */
+.no-uploads-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.no-uploads-container h2 {
+  font-size: 1.8rem;
+  color: #adb5bd; /* Muted color for no uploads */
+}
+
+.no-uploads-container p {
+  font-size: 1.2rem;
+  color: #6c757d; /* Muted grey */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .file-card-container {
+    grid-template-columns: 1fr; /* Stack file cards on smaller screens */
   }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .user-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid #4CAF50;
-    margin-right: 15px;
-  }
-  
-  .user-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .upload-stats {
-    margin-top: 15px;
-  }
-  
-  .upload-count {
-    font-size: 1.2rem;
-    color: #555;
-  }
-  
-  .upload-count .count {
-    font-weight: bold;
-    color: #4CAF50;
-    font-size: 1.5rem;
-  }
-  
+}

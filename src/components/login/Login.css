@@ -1,65 +1,95 @@
+.login * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .login-container{
-    background-image: linear-gradient(to right, #1E3A8A, #2563EB);
-  }
-  
-  .login-card {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
-    padding: 2rem;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
-  }
-  
-  .login-form {
-    width: 100%;
-  }
-  
-  .login-container{
-    .form-label {
-      color: #ffffff;
-    }
-    
-    .text-primary, .btn-primary {
-      color: #ffffff !important;
-    }
-    
-    .btn-primary {
-      background-color: #2563EB;
-      border-color: #2563EB;
-    }
-    
-    .btn-outline-secondary {
-      color: #ffffff;
-      border-color: #ffffff;
-    }
-    
-    .btn-outline-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    
-    input.form-control {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      border: none;
-    }
-    
-    input.form-control::placeholder {
-      color: #c4c4c4;
-    }
-    
-    input.form-control:focus {
-      background-color: rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-      box-shadow: none;
-      border: none;
-    }
-  
-  }
+/* Center the loader */
+.loader-container {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.login-container {
+  background-image: linear-gradient(to right, #1E3A8A, #2563EB);
+  height: 100vh; /* Make sure it takes full height */
+  display: flex; /* Added for flex alignment */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+}
+
+.login-card {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 600px; /* You can set this to whatever fits your design */
+  width: 100%; /* Make sure the card takes full width */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+}
+
+.login-form {
+  width: 100%;
+}
+
+.login-form .form-label {
+  color: #ffffff;
+}
+
+.login .text-primary,
+.login .btn-primary {
+  color: #ffffff !important;
+}
+
+.login .btn-primary {
+  background-color: #2563EB;
+  border-color: #2563EB;
+  transition: background-color 0.3s ease;
+}
+
+.login .btn-primary:hover {
+  background-color: #1d4ed8; /* Darken on hover */
+}
+
+.login .btn-outline-secondary {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.login .btn-outline-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.login-form-control {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: none !important;
+  color: #ffffff !important;
+  transition: background-color 0.3s ease !important;
+}
+.login-form-control::placeholder {
+  color: #c4c4c4 !important;
+}
+
+.login-form-control:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  border: none;
+} 
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  color: #ffffff;
+}

@@ -1,5 +1,55 @@
-.badge-icon{
+/* Badges.css */
+
+.badges-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f7fa; /* Light background for better contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    background-color: #1565C0; /* Primary color for header */
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 15px;
+  }
+  
+  .loader {
+    font-size: 1.5rem;
+    color: #007bff; /* Blue color for loader */
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .no-data-message {
+    font-size: 1.2rem;
+    color: #ff5722; /* Orange color for no data message */
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .badge-list {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .badge {
+    margin: 10px;
+  }
+  
+  .badge-icon {
     border-radius: 50%;
-    width:100px;
+    width: 100px;
     height: 100px;
-}
+  }
+  
