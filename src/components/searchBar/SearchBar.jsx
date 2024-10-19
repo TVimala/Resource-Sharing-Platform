@@ -42,7 +42,7 @@ function SearchBar({ files = [] }) {
             {filteredFiles.map((file, index) => (
               <FileDisplay
                 key={index}
-                driveLink={file.url}
+                url={file.url}
                 fileName={file.fileName}
                 tags={file.tags}
                 uploaderName={file.uploaderName}
