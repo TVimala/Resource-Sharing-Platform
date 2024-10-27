@@ -13,7 +13,8 @@ function Liked() {
   async function fetchliked(){
     setLoading(true);
     try{
-      let res=await fetch(`https://file-api-huow.onrender.com/user-api/user-liked/${currentUser.username}`)
+      let res=await fetch(`https://file-api-xi.vercel.app/user-api/user-liked/${currentUser.username}`)
+     // let res=await fetch(`https://file-api-huow.onrender.com/user-api/user-liked/${currentUser.username}`)
     //  let res=await fetch(`http://localhost:4000/user-api/user-liked/${currentUser.username}`)
       let data=await res.json()
       if(res.ok){

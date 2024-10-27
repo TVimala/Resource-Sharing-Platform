@@ -13,8 +13,8 @@ const Uploadgraph = () => {
       setLoading(true); // Set loading to true before fetching data
       try {
         const username = currentUser.username;
-
-       const response = await fetch(`https://file-api-huow.onrender.com/user-api/user-uploads/${username}/daily`);
+        const response = await fetch(`https://file-api-xi.vercel.app/user-api/user-uploads/${username}/daily`);
+       //const response = await fetch(`https://file-api-huow.onrender.com/user-api/user-uploads/${username}/daily`);
       //  const response = await fetch(`http://localhost:4000/user-api/user-uploads/${username}/daily`);
         const result = await response.json();
         

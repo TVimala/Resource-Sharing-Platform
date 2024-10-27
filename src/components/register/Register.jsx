@@ -14,7 +14,8 @@ function Register() {
     setLoading(true); // Show loader when registration starts
     try {
       console.log(newUser);
-      let res=await fetch("https://file-api-huow.onrender.com/user-api/user",{
+      let res=await fetch("https://file-api-xi.vercel.app/user-api/user",{
+     // let res=await fetch("https://file-api-huow.onrender.com/user-api/user",{
       //let res = await fetch("http://localhost:4000/user-api/user", {
         method: 'POST',
         headers: { "Content-type": "application/json" },

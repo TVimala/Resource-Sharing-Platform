@@ -10,7 +10,8 @@ function Totalusers() {
 
     const fetchUsers = async () => {
         try {
-            let res = await fetch(`https://file-api-huow.onrender.com/user-api/stats`);
+            let res = await fetch(`https://file-api-xi.vercel.app/user-api/stats`);
+           // let res = await fetch(`https://file-api-huow.onrender.com/user-api/stats`);
            //const res = await fetch(`http://localhost:4000/user-api/stats`);
             const data = await res.json();
             console.log('Response:', res); // Log the whole response for debugging

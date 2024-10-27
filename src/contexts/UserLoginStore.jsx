@@ -43,8 +43,9 @@ function UserLoginStore({ children }) {
   // Function to handle user login
   async function loginUser(userCred) {
     try {
-      let res = await fetch('https://file-api-huow.onrender.com/user-api/login', {
-      //  let res = await fetch('http://localhost:4000/user-api/login', {
+         let res = await fetch('https://file-api-xi.vercel.app/user-api/login', {
+      // let res = await fetch('https://file-api-huow.onrender.com/user-api/login', {
+      // let res = await fetch('http://localhost:4000/user-api/login', {
 
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
@@ -86,8 +87,9 @@ function UserLoginStore({ children }) {
   // Function to fetch saved files for the logged-in user
   const fetchSavedFiles = async (username) => {
     try {
+        const res = await fetch(`https://file-api-xi.vercel.app/user-api/user-saved/${username}`);
     //  const res = await fetch(`http://localhost:4000/user-api/user-saved/${username}`);
-    const res = await fetch(`https://file-api-huow.onrender.com/user-api/user-saved/${username}`);
+    //  const res = await fetch(`https://file-api-huow.onrender.com/user-api/user-saved/${username}`);
       const data = await res.json();
       if (res.ok) {
         setSavedFiles(data.payload.saved);
@@ -102,7 +104,8 @@ function UserLoginStore({ children }) {
   // Function to add a file to saved
   const addToSaved = async (file) => {
     try {
-      const res = await fetch(`https://file-api-huow.onrender.com/user-api/add-to-saved/${currentUser.username}`, {
+          const res = await fetch(`https://file-api-xi.vercel.app/user-api/add-to-saved/${currentUser.username}`, {  
+      //  const res = await fetch(`https://file-api-huow.onrender.com/user-api/add-to-saved/${currentUser.username}`, {
       //  const res = await fetch(`http://localhost:4000/user-api/add-to-saved/${currentUser.username}`, {  
       method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -120,8 +123,9 @@ function UserLoginStore({ children }) {
   // Function to remove a file from saved
   const removeFromSaved = async (file) => {
     try {
-      const res = await fetch(`https://file-api-huow.onrender.com/user-api/remove-from-saved/${currentUser.username}`, {
-      //  const res = await fetch(`http://localhost:4000/user-api/remove-from-saved/${currentUser.username}`, {
+        const res = await fetch(`https://file-api-xi.vercel.app/user-api/remove-from-saved/${currentUser.username}`, {
+      //const res = await fetch(`https://file-api-huow.onrender.com/user-api/remove-from-saved/${currentUser.username}`, {
+      //const res = await fetch(`http://localhost:4000/user-api/remove-from-saved/${currentUser.username}`, {
 
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -139,8 +143,9 @@ function UserLoginStore({ children }) {
     // Function to fetch liked files for the logged-in user
     const fetchLikedFiles = async (username) => {
       try {
-        const res = await fetch(`https://file-api-huow.onrender.com/user-api/user-liked/${username}`);
-     //   const res = await fetch(`http://localhost:4000/user-api/user-liked/${username}`);
+        const res = await fetch(`https://file-api-xi.vercel.app/user-api/user-liked/${username}`);
+      //const res = await fetch(`https://file-api-huow.onrender.com/user-api/user-liked/${username}`);
+     //const res = await fetch(`http://localhost:4000/user-api/user-liked/${username}`);
 
         const data = await res.json();
         if (res.ok) {
@@ -156,7 +161,8 @@ function UserLoginStore({ children }) {
     // Function to add a file to liked
     const addToLiked = async (file) => {
       try {
-      const res = await fetch(`https://file-api-huow.onrender.com/user-api/add-to-liked/${currentUser.username}`, {
+        const res = await fetch(`https://file-api-xi.vercel.app/user-api/add-to-liked/${currentUser.username}`, {
+      //const res = await fetch(`https://file-api-huow.onrender.com/user-api/add-to-liked/${currentUser.username}`, {
       //  const res = await fetch(`http://localhost:4000/user-api/add-to-liked/${currentUser.username}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -174,7 +180,8 @@ function UserLoginStore({ children }) {
     // Function to remove a file from liked
     const removeFromLiked = async (file) => {
       try {
-        const res = await fetch(`https://file-api-huow.onrender.com/user-api/remove-from-liked/${currentUser.username}`, {
+        const res = await fetch(`https://file-api-xi.vercel.app/user-api/remove-from-liked/${currentUser.username}`, {
+       // const res = await fetch(`https://file-api-huow.onrender.com/user-api/remove-from-liked/${currentUser.username}`, {
        // const res = await fetch(`http://localhost:4000/user-api/remove-from-liked/${currentUser.username}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },

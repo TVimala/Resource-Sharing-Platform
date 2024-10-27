@@ -14,7 +14,8 @@ function Profile() {
 
     async function fetchUploads(username) {
         try {
-            let res = await fetch(`https://file-api-huow.onrender.com/user-api/user-uploads/${username}`);
+            let res = await fetch(`https://file-api-xi.vercel.app/user-api/user-uploads/${username}`);
+           // let res = await fetch(`https://file-api-huow.onrender.com/user-api/user-uploads/${username}`);
           //  let res = await fetch(`http://localhost:4000/user-api/user-uploads/${username}`);
             let data = await res.json();
             if (res.ok) {
@@ -31,7 +32,8 @@ function Profile() {
 
     async function fetchSaved(username) {
         try {
-             let res = await fetch(`https://file-api-huow.onrender.com/user-api/user-saved/${username}`);
+            let res = await fetch(`https://file-api-xi.vercel.app/user-api/user-saved/${username}`);
+           //  let res = await fetch(`https://file-api-huow.onrender.com/user-api/user-saved/${username}`);
            // let res = await fetch(`http://localhost:4000/user-api/user-saved/${username}`);
             let data = await res.json();
             if (res.ok) {
@@ -48,7 +50,8 @@ function Profile() {
 
     async function fetchLiked(username) {
         try {
-            let res = await fetch(`https://file-api-huow.onrender.com/user-api/user-liked/${username}`);
+            let res = await fetch(`https://file-api-xi.vercel.app/user-api/user-liked/${username}`);
+           // let res = await fetch(`https://file-api-huow.onrender.com/user-api/user-liked/${username}`);
            // let res = await fetch(`http://localhost:4000/user-api/user-liked/${username}`);
             let data = await res.json();
             if (res.ok) {

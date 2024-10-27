@@ -61,7 +61,8 @@ function FileDisplay({ url, fileName, tags, uploaderName, isUpload }) {
     const fileObj = { url, fileName };
     setLoadingDelete(true); // Start loading for delete action
     try {
-      let res = await fetch(`https://file-api-huow.onrender.com/user-api/delete-uploads/${username}`, {  
+      let res = await fetch(`https://file-api-xi.vercel.app/user-api/delete-uploads/${username}`, {  
+      //let res = await fetch(`https://file-api-huow.onrender.com/user-api/delete-uploads/${username}`, {  
      // let res = await fetch(`http://localhost:4000/user-api/delete-uploads/${username}`, {  
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
