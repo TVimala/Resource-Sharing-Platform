@@ -23,3 +23,9 @@ ResoLink is an innovative web application designed to streamline the sharing and
  - **API Testing**: Postman
  - **Development Tools** :VS Code, Git & Github
  - **Deployment**: Vercel (Frontend), Render (Backend)
+
+## 🤝 Contributing
+Contributions are welcome!
+If you find a bug, have a feature idea, or want to improve the platform — feel free to open an issue or a pull request.
+
+Let's build a smarter and more collaborative future together!
