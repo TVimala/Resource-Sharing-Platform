@@ -5,6 +5,8 @@ ResoLink is an innovative web application designed to streamline the sharing and
 
 🌐 Live Demo: [ResoLink](https://resolink.vercel.app/)
 
+📜Documentation: [PDF](https://drive.google.com/file/d/1xcy5Gr-aRKCLlQvjyxnkKxykJGYtGjnI/view)
+
 ## Features
  - 🔐 User Authentication (Sign Up, Login, Profile Management)
  - 📚 Resource Browsing by Domain (Academics, CP/DSA, Development, etc.)
