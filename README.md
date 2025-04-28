@@ -11,9 +11,7 @@ ResoLink is an innovative web application designed to streamline the sharing and
  - 📤 Resource Uploads with tagging and categorization
  - ❤️ Like and 📌 Save resources for easy access later
  - 📈 Profile Analytics (Upload counts, Likes, Saves)
- - 🌐 Responsive Design for all devices
  - 🔍 Advanced Search and Filtering using tags
- - 🛡️ Secure Logout functionality
 
 ## 🛠️ Tech Stack
  - **Frontend**: React.js, Bootstrap
