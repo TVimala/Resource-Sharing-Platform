@@ -1,3 +1,25 @@
-# ResoLink
+## ResoLink – Resource Sharing Platform
 
-ResoLink is a platform where students can upload and find academic resources with ease. Categorize and search for notes, study guides, and more. Join ResoLink to access a wide range of shared materials and elevate your learning experience.
+
+ResoLink is an innovative web application designed to streamline the sharing and management of educational and development resources. It fosters a collaborative learning environment, allowing users to discover, upload, and interact with a wide variety of materials across multiple domains such as academics, competitive programming, and software development.
+
+🌐 Live Demo: [ResoLink](https://resolink.vercel.app/)
+
+## Features
+ - 🔐 User Authentication (Sign Up, Login, Profile Management)
+ - 📚 Resource Browsing by Domain (Academics, CP/DSA, Development, etc.)
+ - 📤 Resource Uploads with tagging and categorization
+ - ❤️ Like and 📌 Save resources for easy access later
+ - 📈 Profile Analytics (Upload counts, Likes, Saves)
+ - 🌐 Responsive Design for all devices
+ - 🔍 Advanced Search and Filtering using tags
+ - 🛡️ Secure Logout functionality
+
+## 🛠️ Tech Stack
+ - **Frontend**: React.js, Bootstrap
+ - **Backend**: Node.js, Express.js
+ - **Database**: MongoDB
+ - **Authentication**: JWT, bcrypt
+ - **API Testing**: Postman
+ - **Development Tools** :VS Code, Git & Github
+ - **Deployment**: Vercel (Frontend), Render (Backend)
